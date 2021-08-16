@@ -19,7 +19,7 @@ This is cobbled together from various scripts and software from github, googling
 		# merge_m4b.bat (create .txt, copy/paste below, rename .txt to .bat)
 			call direnhanced_m4b.bat > fileList.txt
 			ffmpeg -f concat -safe 0 -i fileList.txt -map 0 -map -0:v -c copy input.mp4
-      pause
+     			pause
 			del fileList.txt
 		# mp4_to_m4b.bat + mp4chaps.exe, http://pds16.egloos.com/pds/200910/19/90/mp4_to_m4b.zip (.bat is below, .exe originates from MP4v2)
 				@echo off
