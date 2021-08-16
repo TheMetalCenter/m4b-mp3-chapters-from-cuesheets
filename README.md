@@ -193,18 +193,19 @@ This is cobbled together from various scripts and software from github, googling
 		
 		
 #### other useful info
-quick remux can fix file errors
+- quick remux can fix file errors
 	> ffmpeg -i %FILENAME%.ext -c copy %FILENAME%.mp4
-> ffprobe -i input.ext -show_entries format=duration -v quiet -of csv=p=0
+	> ffprobe -i input.ext -show_entries format=duration -v quiet -of csv=p=0
 
 
-old version of merge_m4b.bat used a custom filename, edited to only export as input.mp4
+- old version of merge_m4b.bat used a custom filename, edited to only export as input.mp4
 		# merge_m4b.bat (create .txt, copy/paste below, rename .txt to .bat)
 			call direnhanced_m4b.bat > fileList.txt
 			set /p FILENAME=Type Desired Output file name then hit ENTER to continue...
 			ffmpeg -f concat -safe 0 -i fileList.txt -c copy "%FILENAME%.mp4"
 			endlocal
-			To export metadata from a file
+
+- To export metadata from a file
 > ffmpeg -i FILE.ext -f ffmetadata in.txt
 or
 > ffmpeg -i FILE.ext -c copy -map_metadata 0 -map_metadata:s:v 0:s:v -map_metadata:s:a 0:s:a -f ffmetadata in.txt
