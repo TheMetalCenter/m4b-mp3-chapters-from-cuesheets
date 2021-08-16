@@ -42,6 +42,9 @@ This is cobbled together from various scripts and software from github, googling
 			del temp.txt
 		# cue2metadata.bat
 			cue2ffmeta.rb export_new.cue > metadata.txt
+		# merge_inputmp4_with_metadata
+			ffmpeg -i input.mp4 -i metadata.txt -map_metadata 1 -codec copy output.mp4
+			pause
 	1. Add m4b files to bin folder of ffmpeg (4.4 plus)
 	2. Import tracks into mp3tag
 	3. Edit "title" fields as desired (full chapter names will take longer than simple Chapter 01) and ensure "track" fields are filled with integers (can use mp3tag > tools > auto number wizard)
@@ -53,15 +56,9 @@ This is cobbled together from various scripts and software from github, googling
 	7. Use text2cue.bat or drag generated .txt file onto TextToCue.exe file, which generates a .cue file
 			# if you manually do it, ensure the the cue has a TITLE field before next step
 	8. Run merge_m4b.bat to merge m4b files to a single mp4 (not m4b!) file, type desired filename without extension
-	9. Run cue2metadata.bat or open cmd in current directory and type the following (be sure to replace FILE/input/output with actual desired filenames):
+	9. Run cue2metadata.bat and merge_inputmp4_with_metadata.bat or open cmd in current directory and type the following (be sure to replace FILE/input/output with actual desired filenames):
 		> cue2ffmeta.rb export_new.cue > metadata.txt
 		> ffmpeg -i input.mp4 -i metadata.txt -map_metadata 1 -codec copy output.mp4
-	## made .bat files for these commands
-		cue2metadata.bat
-			cue2ffmeta.rb export_new.cue > metadata.txt
-		merge_inputmp3_with_metadata.bat
-			ffmpeg -i input.mp3 -i metadata.txt -map_metadata 1 -codec copy output.mp3
-			pause
 	10. Run mp4tom4b.bat (converts fmpeg embedded chapters to proper m4b quicktime format)
 
 
@@ -120,6 +117,9 @@ This is cobbled together from various scripts and software from github, googling
 			del temp.txt
 		# cue2metadata.bat
 			cue2ffmeta.rb export_new.cue > metadata.txt
+		#merge_inputmp3_with_metadata.bat
+			ffmpeg -i input.mp3 -i metadata.txt -map_metadata 1 -codec copy output.mp3
+			pause
 	1. Add mp3 files to bin folder of ffmpeg (4.4 plus)
 	2. Import tracks into mp3tag
 	3. Edit "title" fields as desired and ensure "track" fields are filled  in format with integers (i.e. 01 or 1, not "1 of 42" etc.) (can use mp3tag > tools > auto number wizard to autofill track numbers)
@@ -131,7 +131,7 @@ This is cobbled together from various scripts and software from github, googling
 	7. Use text2cue.bat or drag generated .txt file onto TextToCue.exe file, which generates a .cue file
 			# if you manually do it, ensure the the cue has a TITLE field before next step
 	8. Run merge_mp3.bat to merge mp3 files to a single mp3 file
-	9. Run cue2metadata.bat or open cmd in current directory and type the following (be sure to replace FILE/input/output with actual desired filenames):
+	9. Run cue2metadata.bat and merge_inputmp3_with_metadata.bat or open cmd in current directory and type the following (be sure to replace FILE/input/output with actual desired filenames):
 		> cue2ffmeta.rb FILE.cue > metadata.txt
 		> ffmpeg -i input.mp3 -i metadata.txt -map_metadata 1 -codec copy output.mp3
 	10. Can Double check .mp3 with:
@@ -163,6 +163,9 @@ This is cobbled together from various scripts and software from github, googling
 			pause
 		# cue2metadata.bat
 			cue2ffmeta.rb export_new.cue > metadata.txt
+		#merge_inputmp3_with_metadata.bat
+			ffmpeg -i input.mp3 -i metadata.txt -map_metadata 1 -codec copy output.mp3
+			pause
 	1. Add mp3 files to bin folder of ffmpeg (4.4 plus)
 	2. Run merge_mp3.bat to merge mp3 files to a single mp3 file
 	3. Drag merged mp3 file into mp3directcut
@@ -177,9 +180,9 @@ This is cobbled together from various scripts and software from github, googling
 		# Also can cross references number of chapters with numbers of pauses using epub
 	8. File > Save as .cue
 	9. Open up .cue file in text editor, add PERFORMER "Author Name" as second line and change TITLE as desired
-	10. Open cmd in current directory:
+	10. Run cue2metadata.bat and merge_inputmp3_with_metadata.bat or open cmd in current directory and type the following (be sure to replace FILE/input/output with actual desired filenames):
 		> cue2ffmeta.rb FILE.cue > metadata.txt
-		> ffmpeg -i input.mp3 -i metadata.txt -map_metadata 1 -codec copy output.mp3  
+		> ffmpeg -i input.mp3 -i metadata.txt -map_metadata 1 -codec copy output.mp3
 	11. Can Double check .mp3 with:
 		> ffmpeg -i output.mp3
 		
@@ -215,7 +218,4 @@ Troubleshooting Notes
 - Chapter 1 is labeled Chapter 2 - make sure you have a book title field in cuesheet
 - ffmpeg can't handle m4b extension, but changing to mp4 allows it to work
 - Had one mp3 where adding new metadata removed the embedded chapters
-	happened again, in common: both over 50 chapters and both over 91234567 digits
-	cut one (Dune) down to 49 chapters but still over 91234567 and it worked
-	nevermind, while it solved metadata removal issue some media players still couldn't read it, removing to 48 below the 91234567 worked
-	so, can have exactly 50 chapters - no more (but have seen a mp3 file with more than 50 - investigate)
+	Seems to occur when over 50 chapters and/or 90000000 (7 zeroes) (however I have seen a mp3 file with more than 50 - investigate)
