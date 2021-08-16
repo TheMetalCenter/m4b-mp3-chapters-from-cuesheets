@@ -212,10 +212,10 @@ General work flow is:
 
 - old version of merge_m4b.bat used a custom filename, edited to only export as input.mp4
 		# merge_m4b.bat (create .txt, copy/paste below, rename .txt to .bat)
-			> call direnhanced_m4b.bat > fileList.txt
-			> set /p FILENAME=Type Desired Output file name then hit ENTER to continue...
-			> ffmpeg -f concat -safe 0 -i fileList.txt -c copy "%FILENAME%.mp4"
-			> endlocal
+> call direnhanced_m4b.bat > fileList.txt
+> set /p FILENAME=Type Desired Output file name then hit ENTER to continue...
+> ffmpeg -f concat -safe 0 -i fileList.txt -c copy "%FILENAME%.mp4"
+> endlocal
 
 - To export metadata from a file
 > ffmpeg -i FILE.ext -f ffmetadata in.txt
