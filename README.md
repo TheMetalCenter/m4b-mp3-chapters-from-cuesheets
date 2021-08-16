@@ -1,4 +1,4 @@
-### clunky-audiobook-chapterizing
+## clunky-audiobook-chapterizing
 A clunky but mostly automated way to merge audiobooks without an encoding step (remuxing only) to get either single file m4b files with quicktime/nero chapters or single file mp3s with id3v2 chapters (not widely supported unfortunately)
 
 This is cobbled together from various scripts and software from github, googling, etc. 
@@ -204,7 +204,7 @@ General work flow is:
 		
 		
 		
-#### other useful info
+### other useful info
 - quick remux can fix file errors
 	> ffmpeg -i %FILENAME%.ext -c copy %FILENAME%.mp4
 	> ffprobe -i input.ext -show_entries format=duration -v quiet -of csv=p=0
@@ -222,7 +222,7 @@ General work flow is:
 or
 > ffmpeg -i FILE.ext -c copy -map_metadata 0 -map_metadata:s:v 0:s:v -map_metadata:s:a 0:s:a -f ffmetadata in.txt
 
-Troubleshooting Notes
+### Troubleshooting Notes
 - Rubycue will have parsing issues if unedited. Comment out fields related to validation and performer to fix in cuesheet.rb file
 - Rubycue by default doesn't work with audiobooks over 16 hours, change index to 4 to fix in cuesheet.rb
 - Tracks in mp3tag must be integers (not fractions or phrases), TextToCue.exe is sensitive to format so double check for example no HH:MM:SS must be MM:SS
