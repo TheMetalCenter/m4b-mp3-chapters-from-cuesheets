@@ -4,7 +4,7 @@ WIP readme
 
 A clunky but mostly automated way to merge audiobooks without an encoding step (remuxing only) to get either single file m4b files with quicktime/nero chapters or single file mp3s with id3v2 chapters
 
-Full credits to creators of borrowed scripts/software (TestToCue, mergechapters.py, direnhanced, ffmpeg, mp4chaps, rubycue, cue2ffmetadata, mp3directcut)
+This is cobbled together from various scripts and software from github, googling, etc. Full credits to creators of borrowed scripts/software (TestToCue, mergechapters.py, direnhanced, ffmpeg, mp4chaps, rubycue, cue2ffmetadata, mp3directcut, mp3tag)
 
 ### Creating single M4B file with embedded chapters from individual chapterized m4b files
 	Alternative method: AudioBookConverter (https://github.com/yermak/AudioBookConverter) can handle these pretty well, potentially much easier, but can be buggy at times
