@@ -5,6 +5,8 @@ This is cobbled together from various scripts and software from github, googling
 
 Not everything that is needed is included in this repository, will also need Ruby, python, rubycue gem and its associated gems, mp3directcut, ffmpeg (obviously), mp3tag
 
+Any suggestions on how to improve process is appreciated
+
 ### Creating single M4B file with embedded chapters from individual chapterized m4b files
 	Alternative method: AudioBookConverter (https://github.com/yermak/AudioBookConverter) can handle these pretty well, potentially much easier, but can be buggy at times
 	0. requires:
