@@ -76,7 +76,7 @@ General work flow is:
 
 
 
-### Creating singe M4B file that retains chapers from two or more m4b files with embedded chapters
+### Creating single M4B file that retains chapers from two or more m4b files with embedded chapters
 	0. requires:
 		# ffmpeg (tested using 4.4)
 		# python (tested using 3.9.8)
@@ -223,12 +223,9 @@ or
 > ffmpeg -i FILE.ext -c copy -map_metadata 0 -map_metadata:s:v 0:s:v -map_metadata:s:a 0:s:a -f ffmetadata in.txt
 
 Troubleshooting Notes
-- Had a mp3 that would lose embedded chapter information everytime metadata was edited. Noticed that last chapter started and ended at same time in cue sheet. removed that chapter and re-embedded with ffmpeg, fixed it. 
-- rubycue will have parsing issues if unedited. comment out fields related to validation and performer to fix in cuesheet.rb and maybe one other file? can't remember
-- rubycue by default doesn't work with audiobooks over 16 hours, change index to 4 to fix in cuesheet.rb
-- tracks in mp3tag must be integers, texttocue is sensitive to format
-- make sure no "-" in chapter titles when using texttocue, can add back later
-- Chapter 1 is labeled Chapter 2 - make sure you have a book title field in cuesheet
+- Rubycue will have parsing issues if unedited. Comment out fields related to validation and performer to fix in cuesheet.rb file
+- Rubycue by default doesn't work with audiobooks over 16 hours, change index to 4 to fix in cuesheet.rb
+- Tracks in mp3tag must be integers (not fractions or phrases), TextToCue.exe is sensitive to format so double check for example no HH:MM:SS must be MM:SS
+- If Chapter 1 is missing and starts with Chapter 2 then the title field of the file took the title field of first chapter, to fix make sure you have a file TITLE field in cuesheet on first line
 - ffmpeg can't handle m4b extension, but changing to mp4 allows it to work
-- Had one mp3 where adding new metadata removed the embedded chapters
-	Seems to occur when over 50 chapters and/or 90000000 (7 zeroes) (however I have seen a mp3 file with more than 50 - investigate)
+- Had some mp3 files where adding new metadata removed the embedded chapters. This seems to occur when over 50 chapters and/or 90000000 (7 zeroes). Fix by combining the extra chapters or splitting into two files. Obviously not optimal, if anyone has solution please share. (I have seen a mp3 file with more than 50, need to investigate)
