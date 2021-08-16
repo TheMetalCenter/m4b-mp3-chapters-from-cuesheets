@@ -3,6 +3,8 @@ A clunky but mostly automated way to merge audiobooks without an encoding step (
 
 This is cobbled together from various scripts and software from github, googling, etc. Full credits to creators of borrowed scripts/software (TestToCue, mergechapters.py, direnhanced, ffmpeg, mp4chaps, rubycue, mp3directcut)
 
+Not everything that is needed is included in this repository, will also need Ruby, python, rubycue gem and its associated gems, mp3directcut, ffmpeg (obviously), mp3tag
+
 ### Creating single M4B file with embedded chapters from individual chapterized m4b files
 	Alternative method: AudioBookConverter (https://github.com/yermak/AudioBookConverter) can handle these pretty well, potentially much easier, but can be buggy at times
 	0. requires:
