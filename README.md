@@ -231,4 +231,5 @@ or
 - If Chapter 1 is missing and starts with Chapter 2 then the title field of the file took the title field of first chapter, to fix make sure you have a file TITLE field in cuesheet on first line
 - Minor issue, but last chapter duration is often incorrect if starting from tracklist, says 0 seconds. Can be fixed with small manual edit, duplicate the final chapter in the tracklist, then delete it in the metadata.txt file before merging with input
 - ffmpeg can't handle m4b extension, but changing to mp4 allows it to work
-- Had some mp3 files where adding new metadata removed the embedded chapters. This seems to occur when over 50 chapters and/or 90000000 (7 zeroes). Fix by combining the extra chapters or splitting into two files. Obviously not optimal, if anyone has solution please share. (I have seen a mp3 file with more than 50, need to investigate)
+- Had some mp3 files where adding new metadata removed the embedded chapters. This seems to occur when over 50 chapters and/or 90000000 (7 zeroes). Fix by combining the extra chapters or splitting into two files. Obviously not optimal, if anyone has solution please share.
+- 	Found a mp3 that has over 50 chapters, but only up to 4.9 x 10^7, so suggests it has to do with being over 9 x 10^7 than number of chapters
