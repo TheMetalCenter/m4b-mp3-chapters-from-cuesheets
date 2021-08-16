@@ -58,7 +58,7 @@ Any suggestions on how to improve process is appreciated
 		$loopend()
 	6. Save changes, then hit Okay and save as export.txt file in same directory, say yes to look at it and make sure none of the chapters are over an hour and thus in HH:MM:SS format, if so convert to MM:SS!!
 	7. Use text2cue.bat or drag generated .txt file onto TextToCue.exe file, which generates a .cue file
-			# if you manually do it, ensure the the cue has a TITLE field before next step
+		# if you manually do it, ensure the the cue has a TITLE field before next step
 	8. Run merge_m4b.bat to merge m4b files to a single input.mp4 file
 	9. Run cue2metadata.bat and merge_inputmp4_with_metadata.bat or open cmd in current directory and type the following (be sure to replace FILE/input/output with actual desired filenames):
 		> cue2ffmeta.rb export_new.cue > metadata.txt
