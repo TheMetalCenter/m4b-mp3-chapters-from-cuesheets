@@ -5,7 +5,7 @@ This is cobbled together from various scripts and software from github, googling
 
 Full credit to creators of borrowed scripts/software (TestToCue, mergechapters.py, direnhanced, ffmpeg, mp4chaps, rubycue, mp3directcut)
 
-Not everything that is needed is included in this repository, will also need Ruby, python, rubycue gem and its associated gems, mp3directcut, ffmpeg (obviously), mp3tag
+Not everything that is needed is included in this repository, will also need Ruby, python, rubycue gem and its associated gems, mp3directcut, ffmpeg (obviously), mp3tag, rxrepl
 
 Any suggestions on how to improve process is appreciated
 
@@ -20,58 +20,26 @@ General work flow is:
 	0. requires:
 		# ffmpeg (tested using 4.4)
 		# direnhanced_m4b.bat (create .txt, copy/paste below, rename .txt to .bat)
-			@echo off
-			setlocal enabledelayedexpansion
-			for /f "tokens=*" %%f in ('dir /b *.m4b') do (
-			echo file '%%f'
-			)
 		# merge_m4b.bat (create .txt, copy/paste below, rename .txt to .bat)
-			call direnhanced_m4b.bat > fileList.txt
-			ffmpeg -f concat -safe 0 -i fileList.txt -map 0 -map -0:v -c copy input.mp4
-     		pause
-			del fileList.txt
 		# mp4_to_m4b.bat + mp4chaps.exe, http://pds16.egloos.com/pds/200910/19/90/mp4_to_m4b.zip (.bat is below, .exe originates from MP4v2)
-				@echo off
-				echo CONVERTING MP4 to M4B
-				FOR %%i IN (*.mp4) DO (
-				echo converting %%i
-				mp4chaps.exe -QuickTime -convert "%%i"
-				rename "%%i" "%%~ni.m4b"
-				)
-				echo  CONVERTING COMPLETE
 		# text2cue.bat
-			TextToCue.exe "export.txt"
-			@ECHO OFF
-			:: Store the string  you want to prepend in a variable
-			SET "text=TITLE "Title""
-			:: copy the contents into a temp file
-			type export_new.cue > temp.txt
-			:: Now Overwrite the file with the contents in "text" variable
-			echo %text% > export_new.cue 
-			:: Now Append the Old Contents
-			type temp.txt >> export_new.cue
-			:: Delete the temporary file
-			del temp.txt
 		# cue2metadata.bat
-			cue2ffmeta.rb export_new.cue > metadata.txt
 		# merge_inputmp4_with_metadata
-			ffmpeg -i input.mp4 -i metadata.txt -map_metadata 1 -codec copy output.mp4
-			pause
+		# rxrepl (https://sites.google.com/site/regexreplace/) - optional, checks for formatting errors but the .bat still works if it isn't present
 	1. Add m4b files to bin folder of ffmpeg (4.4 plus)
 	2. Import tracks into mp3tag
 	3. Edit "title" fields as desired (full chapter names will take longer than simple Chapter 01) and ensure "track" fields are filled with integers (can use mp3tag > tools > auto number wizard)
-	4. select all, right click > export > txt_taglist 
-	5. Edit txt_taglist, ensure it is this format:
-		$filename(txt,utf-8)$loop(%_path%)%track%.%artist% - %title% - %duration
-		$loopend()
-	6. Save changes, then hit Okay and save as export.txt file in same directory, say yes to look at it and make sure none of the chapters are over an hour and thus in HH:MM:SS format, if so convert to MM:SS!!
-	7. Use text2cue.bat or drag generated .txt file onto TextToCue.exe file, which generates a .cue file
+	4. select all, right click > export > txt_taglist > Okay to create export.txt file
+		- If this is first time, you will need to first edit "txt_taglist" and replace current text with below and save changes
+			$filename(txt,utf-8)$loop(%_path%)%track%.%artist% - %title% - $div(%_length_seconds%,60):$mod(%_length_seconds%,60)
+			$loopend()
+	5. Use text2cue.bat or drag generated .txt file onto TextToCue.exe file, which generates a .cue file
 		# if you manually do it, ensure the the cue has a TITLE field before next step
-	8. Run merge_m4b.bat to merge m4b files to a single input.mp4 file
-	9. Run cue2metadata.bat and merge_inputmp4_with_metadata.bat or open cmd in current directory and type the following (be sure to replace FILE/input/output with actual desired filenames):
+	6. Run merge_m4b.bat to merge m4b files to a single input.mp4 file
+	7. Run cue2metadata.bat and merge_inputmp4_with_metadata.bat or open cmd in current directory and type the following (be sure to replace FILE/input/output with actual desired filenames):
 		> cue2ffmeta.rb export_new.cue > metadata.txt
 		> ffmpeg -i input.mp4 -i metadata.txt -map_metadata 1 -codec copy output.mp4
-	10. Run mp4tom4b.bat (converts fmpeg embedded chapters to proper m4b quicktime format)
+	8. Run mp4tom4b.bat (converts fmpeg embedded chapters to proper m4b quicktime format)
 
 
 
@@ -104,49 +72,25 @@ General work flow is:
 			update: made more edits to complete turn off performer parsing validation
 		# cue2ffmeta.rb
 		# direnhanced_mp3.bat (create a text file, copy and paste below, rename .txt to .bat)
-			@echo off
-			setlocal enabledelayedexpansion
-			for /f "tokens=*" %%f in ('dir /b *.mp3') do (
-			echo file '%%f'
-			)
 		# merge_mp3.bat (create a text file, copy and paste below, rename .txt to .bat)
-			call direnhanced_mp3.bat > fileList.txt
-			ffmpeg -f concat -safe 0 -i fileList.txt -c copy input.mp3
-			endlocal
-			pause
 		# text2cue.bat
-			TextToCue.exe "export.txt"
-			@ECHO OFF
-			:: Store the string  you want to prepend in a variable
-			SET "text=TITLE "Title""
-			:: copy the contents into a temp file
-			type export_new.cue > temp.txt
-			:: Now Overwrite the file with the contents in "text" variable
-			echo %text% > export_new.cue 
-			:: Now Append the Old Contents
-			type temp.txt >> export_new.cue
-			:: Delete the temporary file
-			del temp.txt
 		# cue2metadata.bat
-			cue2ffmeta.rb export_new.cue > metadata.txt
-		#merge_inputmp3_with_metadata.bat
-			ffmpeg -i input.mp3 -i metadata.txt -map_metadata 1 -codec copy output.mp3
-			pause
+		# merge_inputmp3_with_metadata.bat
+		# rxrepl (https://sites.google.com/site/regexreplace/) - optional, checks for formatting errors but the .bat still works if it isn't present
 	1. Add mp3 files to bin folder of ffmpeg (4.4 plus)
 	2. Import tracks into mp3tag
 	3. Edit "title" fields as desired and ensure "track" fields are filled  in format with integers (i.e. 01 or 1, not "1 of 42" etc.) (can use mp3tag > tools > auto number wizard to autofill track numbers)
-	4. select all, right click > export > txt_taglist 
-	5. Edit txt_taglist, ensure it is this format:
-		$filename(txt,utf-8)$loop(%_path%)%track%.%artist% - %title% - %duration
-		$loopend()
-	6. Save changes, then hit Okay to generate .txt file, say yes to look at it and make sure none of the chapters are over an hour and thus in HH:MM:SS format, if so convert to MM:SS
-	7. Use text2cue.bat or drag generated .txt file onto TextToCue.exe file, which generates a .cue file
+	4. select all, right click > export > txt_taglist > Okay to create export.txt file
+		- If this is first time, you will need to first edit "txt_taglist" and replace current text with below and save changes
+			$filename(txt,utf-8)$loop(%_path%)%track%.%artist% - %title% - $div(%_length_seconds%,60):$mod(%_length_seconds%,60)
+			$loopend()
+	5. Use text2cue.bat or drag generated .txt file onto TextToCue.exe file, which generates a .cue file
 			# if you manually do it, ensure the the cue has a TITLE field before next step
-	8. Run merge_mp3.bat to merge mp3 files to a single input.mp3 file
-	9. Run cue2metadata.bat and merge_inputmp3_with_metadata.bat or open cmd in current directory and type the following (be sure to replace FILE/input/output with actual desired filenames):
+	6. Run merge_mp3.bat to merge mp3 files to a single input.mp3 file
+	7. Run cue2metadata.bat and merge_inputmp3_with_metadata.bat or open cmd in current directory and type the following (be sure to replace FILE/input/output with actual desired filenames):
 		> cue2ffmeta.rb FILE.cue > metadata.txt
 		> ffmpeg -i input.mp3 -i metadata.txt -map_metadata 1 -codec copy output.mp3
-	10. Can Double check .mp3 with:
+	8. Can Double check .mp3 with:
 		> ffmpeg -i output.mp3
 		
 		
@@ -163,21 +107,9 @@ General work flow is:
 			Then change index hours to 4 (required for audiobooks over 16 hours)
 		# cue2ffmeta.rb
 		# direnhanced_mp3.bat (create .txt file, copy/paste below, rename .txt to .bat)
-			@echo off
-			setlocal enabledelayedexpansion
-			for /f "tokens=*" %%f in ('dir /b *.mp3') do (
-			echo file '%%f'
-			)
 		# merge_mp3.bat (create .txt file, copy/paste below, rename .txt to .bat)
-			call direnhanced_mp3.bat > fileList.txt
-			ffmpeg -f concat -safe 0 -i fileList.txt -c copy input.mp3
-			del fileList.txt
-			pause
 		# cue2metadata.bat
-			cue2ffmeta.rb export_new.cue > metadata.txt
-		#merge_inputmp3_with_metadata.bat
-			ffmpeg -i input.mp3 -i metadata.txt -map_metadata 1 -codec copy output.mp3
-			pause
+		# merge_inputmp3_with_metadata.bat
 	1. Add mp3 files to bin folder of ffmpeg (4.4 plus)
 	2. Run merge_mp3.bat to merge mp3 files to a single input.mp3 file
 	3. Drag merged mp3 file into mp3directcut
@@ -223,13 +155,16 @@ General work flow is:
 or
 > ffmpeg -i FILE.ext -c copy -map_metadata 0 -map_metadata:s:v 0:s:v -map_metadata:s:a 0:s:a -f ffmetadata in.txt
 
+- remove existing chapters
+> ffmpeg -i input.mp3 -map_metadata -1 -map_chapters -1 -c copy output2.mp3
+
 ### Troubleshooting Notes
 - ffmpeg can't seem to hand apostrophes in filenames when concating the files from fileList.txt
+- an mp3 id3v2 chapter has a character limit of 62 characters apparently (untested)
 - Rubycue will have parsing issues if unedited. Comment out fields related to validation and performer to fix in cuesheet.rb file
 - Rubycue by default doesn't work with audiobooks over 16 hours, change index to 4 to fix in cuesheet.rb
 - Tracks in mp3tag must be integers (not fractions or phrases), TextToCue.exe is sensitive to format so double check for example no HH:MM:SS must be MM:SS
 - If Chapter 1 is missing and starts with Chapter 2 then the title field of the file took the title field of first chapter, to fix make sure you have a file TITLE field in cuesheet on first line
 - Minor issue, but last chapter duration is often incorrect if starting from tracklist, says 0 seconds. Can be fixed with small manual edit, duplicate the final chapter in the tracklist, then delete it in the metadata.txt file before merging with input
 - ffmpeg can't handle m4b extension, but changing to mp4 allows it to work
-- Had some mp3 files where adding new metadata removed the embedded chapters. This seems to occur when over 50 chapters and/or 90000000 (7 zeroes). Fix by combining the extra chapters or splitting into two files. Obviously not optimal, if anyone has solution please share.
-- 	Found a mp3 that has over 50 chapters, but only up to 4.9 x 10^7, so suggests it has to do with being over 9 x 10^7 than number of chapters
+- Had some mp3 files where adding new metadata removed the embedded chapters. This seems to occur when over 50 chapters and/or 90000000 (7 zeroes). Tentative fix by enforcing id3v2.3 tags, alternately fix by combining the extra chapters or splitting into two files. If anyone has other solutions please share.
