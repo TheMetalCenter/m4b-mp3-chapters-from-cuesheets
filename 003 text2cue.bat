@@ -1,12 +1,22 @@
-TextToCue.exe "export.txt"
+::The following will check for improper format of export tracklist
 @ECHO OFF
-:: Store the string  you want to prepend in a variable
+rxrepl.exe -f export.txt -o formatcheck.txt -s "0.\:..\:.." -r "WARNING"
+findstr /m "WARNING" formatcheck.txt
+if %errorlevel%==0 (echo WARNING: Unable to convert properly. Please check your exported tracklist for improper HH:MM:SS format and convert them to MM:SS)
+if %errorlevel%==0 (pause)
+if %errorlevel%==0 (del formatcheck.txt)
+if %errorlevel%==0 (EXIT \B)
+if %errorlevel%==1 (echo No warnings found, continuing...)
+
+TextToCue.exe "export.txt"
+
+::The following is to add a placeholder TITLE field to prevent ffmpeg from confusing first chapter's title with the whole file's title
+@ECHO OFF
+:: Store the string  you want to prepend in a variable and copy the contents into a temp file
 SET "text=TITLE "Title""
-:: copy the contents into a temp file
 type export_new.cue > temp.txt
-:: Now Overwrite the file with the contents in "text" variable
+:: Overwrites the file with the contents in "text" variable
 echo %text% > export_new.cue 
-:: Now Append the Old Contents
+:: Appends the old contents & deletes the temporary file
 type temp.txt >> export_new.cue
-:: Delete the temporary file
 del temp.txt

@@ -1,5 +1,11 @@
 del export.txt
+del formatcheck.txt
 del export_new.cue
 del input.mp3
 del metadata.txt
 del Cover.jpg
+del meta1.txt
+del meta2.txt
+del meta3.txt
+del metadatatemp.txt
+del fileList.txt
