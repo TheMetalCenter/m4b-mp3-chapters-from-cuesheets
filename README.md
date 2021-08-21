@@ -32,7 +32,7 @@ General work flow is:
 	3. Edit "title" fields as desired (full chapter names will take longer than simple Chapter 01) and ensure "track" fields are filled with integers (can use mp3tag > tools > auto number wizard)
 	4. select all, right click > export > txt_taglist > Okay to create export.txt file
 		- If this is first time, you will need to first edit "txt_taglist" and replace current text with below and save changes
-			$filename(txt,utf-8)$loop(%_path%)%track%.%artist% - %title% - $div(%_length_seconds%,60):$mod(%_length_seconds%,60)
+			$filename(txt,utf-8)$loop(%_path%)%track%.%artist% - %title% - $div(%_length_seconds%,60)':'$num($mod(%_length_seconds%,60),2)
 			$loopend()
 	5. Use text2cue.bat or drag generated .txt file onto TextToCue.exe file, which generates a .cue file
 		# if you manually do it, ensure the the cue has a TITLE field before next step
@@ -83,7 +83,7 @@ General work flow is:
 	3. Edit "title" fields as desired and ensure "track" fields are filled  in format with integers (i.e. 01 or 1, not "1 of 42" etc.) (can use mp3tag > tools > auto number wizard to autofill track numbers)
 	4. select all, right click > export > txt_taglist > Okay to create export.txt file
 		- If this is first time, you will need to first edit "txt_taglist" and replace current text with below and save changes
-			$filename(txt,utf-8)$loop(%_path%)%track%.%artist% - %title% - $div(%_length_seconds%,60):$mod(%_length_seconds%,60)
+			$filename(txt,utf-8)$loop(%_path%)%track%.%artist% - %title% - $div(%_length_seconds%,60)':'$num($mod(%_length_seconds%,60),2)
 			$loopend()
 	5. Use text2cue.bat or drag generated .txt file onto TextToCue.exe file, which generates a .cue file
 			# if you manually do it, ensure the the cue has a TITLE field before next step
@@ -161,12 +161,12 @@ or
 > ffmpeg -i input.mp3 -map_metadata -1 -map_chapters -1 -c copy output2.mp3
 
 ### Troubleshooting Notes
-- ffmpeg can't seem to hand apostrophes in filenames when concating the files from fileList.txt
-- an mp3 id3v2 chapter has a character limit of 62 characters apparently (untested)
-- Rubycue will have parsing issues if unedited. Comment out fields related to validation and performer to fix in cuesheet.rb file
-- Rubycue by default doesn't work with audiobooks over 16 hours, change index to 4 to fix in cuesheet.rb
-- Tracks in mp3tag must be integers (not fractions or phrases), TextToCue.exe is sensitive to format so double check for example no HH:MM:SS must be MM:SS
+- This method has trouble with special characters, often in the filename of the chapter files or occasionally in the title fields. If you are having issues, check for these characters first.
+- Note that an mp3 id3v2 chapter has a character limit of 62 characters apparently (untested)
+- Rubycue will have parsing issues if unedited. Comment out fields related to validation and performer to fix in cuesheet.rb file - see my fork if you want to copy it
+- Rubycue by default doesn't work with audiobooks over 16 hours, change index to 4 to fix in cuesheet.rb - see my fork if you want to copy it
+- Tracks in mp3tag must be integers (not fractions or phrases), TextToCue.exe is sensitive to format so double check for example no HH:MM:SS must be MM:SS (this should be automatically be taken care of now if using mp3tag)
 - If Chapter 1 is missing and starts with Chapter 2 then the title field of the file took the title field of first chapter, to fix make sure you have a file TITLE field in cuesheet on first line
-- Minor issue, but last chapter duration is often incorrect if starting from tracklist, says 0 seconds. Can be fixed with small manual edit, duplicate the final chapter in the tracklist, then delete it in the metadata.txt file before merging with input
+- Minor issue, but last chapter duration is often given as 0 if starting from tracklist (I think it is result a result of cue2ffmeta needing a following chapter to calculate end time). Can be fixed with small manual edit, duplicate the final chapter in the tracklist, then delete it in the metadata.txt file before merging with input
 - ffmpeg can't handle m4b extension, but changing to mp4 allows it to work
-- Had some mp3 files where adding new metadata removed the embedded chapters. This seems to occur when over 50 chapters and/or 90000000 (7 zeroes). Tentative fix by enforcing id3v2.3 tags, alternately fix by combining the extra chapters or splitting into two files. If anyone has other solutions please share.
+- Had some mp3 files where adding new metadata removed the embedded chapters. This seems to occur when over 50 chapters and/or 90000000 (7 zeroes). Seems to be fixed by enforcing id3v2.3 tags. If still having issues, may have to fix by combining the extra chapters or splitting into two files. If anyone has other solutions please share.
