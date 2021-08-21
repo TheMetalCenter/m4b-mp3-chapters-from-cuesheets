@@ -9,15 +9,15 @@ if %errorlevel%==0 (EXIT \B)
 if %errorlevel%==1 (echo No warnings found, continuing...)
 if %errorlevel%==1 (del formatcheck.txt)
 
-TextToCue.exe "export.txt"
+TextToCue.exe "list.txt"
 
 ::The following is to add a placeholder TITLE field to prevent ffmpeg from confusing first chapter's title with the whole file's title
 @ECHO OFF
 :: Store the string  you want to prepend in a variable and copy the contents into a temp file
 SET "text=TITLE "Title""
-type export_new.cue > temp.txt
+type cuesheet.cue > temp.txt
 :: Overwrites the file with the contents in "text" variable
-echo %text% > export_new.cue 
+echo %text% > cuesheet.cue 
 :: Appends the old contents & deletes the temporary file
-type temp.txt >> export_new.cue
+type temp.txt >> cuesheet.cue
 del temp.txt

@@ -1,2 +1,1 @@
-cue2ffmeta.rb export_new.cue > metadata.txt
-pause
+cue2ffmeta.rb cuesheet.cue > metadata.txt

@@ -1,6 +1,6 @@
-del export.txt
+del list.txt
 del formatcheck.txt
-del export_new.cue
+del cuesheet.cue
 del input.mp3
 del metadata.txt
 del Cover.jpg
