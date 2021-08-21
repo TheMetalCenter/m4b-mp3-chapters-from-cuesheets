@@ -8,10 +8,10 @@ set /p inputmetadata=< meta3.txt
 ffmpeg -i %inputmetadata% -f ffmetadata metadatatemp.txt
 ffmpeg -f concat -safe 0 -i fileList.txt -i metadatatemp.txt -map 0 -map_metadata 1 -c copy input.mp3
 ::ffmpeg -f concat -safe 0 -i fileList.txt -c copy input.mp3
-pause
 del fileList.txt
 del inputmeta.txt
 del metadatatemp.txt
 del meta1.txt
 del meta2.txt
 del meta3.txt
+pause

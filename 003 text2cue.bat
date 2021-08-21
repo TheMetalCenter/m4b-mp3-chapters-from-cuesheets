@@ -7,6 +7,7 @@ if %errorlevel%==0 (pause)
 if %errorlevel%==0 (del formatcheck.txt)
 if %errorlevel%==0 (EXIT \B)
 if %errorlevel%==1 (echo No warnings found, continuing...)
+if %errorlevel%==1 (del formatcheck.txt)
 
 TextToCue.exe "export.txt"
 
