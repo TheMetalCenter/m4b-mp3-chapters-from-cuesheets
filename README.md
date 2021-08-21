@@ -78,8 +78,7 @@ cleanup.bat will delete all working files (including input, excluding output) - 
 	1. Add mp3 files to bin folder of ffmpeg (4.4 plus)
 	2. Run merge_mp3.bat to merge mp3 files to a single input.mp3 file
 	3. Drag merged mp3 file into mp3directcut
-	4. Go to special > pause detection
-		# Try -44.5 dB, 2.9 s, 10 frames
+	4. Go to special > pause detection, try -44.5 dB, 2.9 s, 10 frames as a starting point
 	5. Wait for it to detect chapter breaks, click close once it no longer says "stop"
 	6. Check detected chapters with the >| dotted line button
 		# If undercounts chapters, repeat step 4 with lower seconds or manually find chapters to add (c creates a chapter but only if correctly selected, quickly make chapters at cursor by hitting b, n, c)
