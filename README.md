@@ -1,7 +1,7 @@
 ## clunky-audiobook-chapterizing
-A clunky but mostly automated way to merge audiobooks without an encoding step (remuxing only) to get either single file m4b files with quicktime/nero chapters or single file mp3s with id3v2 chapters (not widely supported unfortunately)
+A clunky but mostly automated way to merge audiobooks without an encoding step (remuxing only) to either single file m4b files with quicktime/nero chapters or single file mp3s with id3v2 chapters (not widely supported unfortunately)
 
-This is cobbled together from various scripts and software from github, googling, etc, but the majority is in .bat files so Windows is required (probably would be trivial to convert to python/ruby except for the executables)
+This is cobbled together from various scripts and software from github, googling, etc, but the majority is in .bat files so Windows is required (probably would be straightforward to convert to python/ruby except for the executables)
 
 #### Full credit to creators of borrowed scripts/software (included in repository, mainly for redundancy, will remove if asked):
 - TestToCue (https://community.mp3tag.de/t/generate-cue-file-from-tracklist/11750/13)
