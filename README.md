@@ -19,9 +19,10 @@ General work flow is:
 	Alternative method: AudioBookConverter (https://github.com/yermak/AudioBookConverter) can handle these pretty well, potentially much easier, but can be buggy at times
 	0. requires:
 		# ffmpeg (tested using 4.4)
-		# direnhanced_m4b.bat (create .txt, copy/paste below, rename .txt to .bat)
-		# merge_m4b.bat (create .txt, copy/paste below, rename .txt to .bat)
-		# mp4_to_m4b.bat + mp4chaps.exe, http://pds16.egloos.com/pds/200910/19/90/mp4_to_m4b.zip (.bat is below, .exe originates from MP4v2)
+		# filelistgenerator_m4b.bat
+		# metadatatransfer_m4b.bat
+		# merge_m4b.bat
+		# mp4_to_m4b.bat + mp4chaps.exe, http://pds16.egloos.com/pds/200910/19/90/mp4_to_m4b.zip (.exe originates from MP4v2)
 		# text2cue.bat
 		# cue2metadata.bat
 		# merge_inputmp4_with_metadata
@@ -71,8 +72,8 @@ General work flow is:
 			Then change index hours to 4 
 			update: made more edits to complete turn off performer parsing validation
 		# cue2ffmeta.rb
-		# direnhanced_mp3.bat (create a text file, copy and paste below, rename .txt to .bat)
-		# merge_mp3.bat (create a text file, copy and paste below, rename .txt to .bat)
+		# filelistgenerator_mp3.bat
+		# metadatatransfer_mp3.bat
 		# text2cue.bat
 		# cue2metadata.bat
 		# merge_inputmp3_with_metadata.bat
@@ -106,8 +107,9 @@ General work flow is:
 			See pending pull request to fix performer validation issues (currently script checks for PERFORMER field on every cue chapter entry, this removes that requirement)
 			Then change index hours to 4 (required for audiobooks over 16 hours)
 		# cue2ffmeta.rb
-		# direnhanced_mp3.bat (create .txt file, copy/paste below, rename .txt to .bat)
-		# merge_mp3.bat (create .txt file, copy/paste below, rename .txt to .bat)
+		# filelistgenerator_mp3.bat
+		# metadatatransfer_mp3.bat
+		# merge_mp3.bat
 		# cue2metadata.bat
 		# merge_inputmp3_with_metadata.bat
 	1. Add mp3 files to bin folder of ffmpeg (4.4 plus)
@@ -144,7 +146,7 @@ General work flow is:
 	> ffprobe -i input.ext -show_entries format=duration -v quiet -of csv=p=0
 
 - old version of merge_m4b.bat allowed for custom filename entry, edited to only export as input.mp4
-# merge_m4b.bat (create .txt, copy/paste below, rename .txt to .bat)
+# merge_m4b.bat
 > call direnhanced_m4b.bat > fileList.txt
 > set /p FILENAME=Type Desired Output file name then hit ENTER to continue...
 > ffmpeg -f concat -safe 0 -i fileList.txt -c copy "%FILENAME%.mp4"
