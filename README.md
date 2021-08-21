@@ -146,7 +146,7 @@ General work flow is:
 	> ffprobe -i input.ext -show_entries format=duration -v quiet -of csv=p=0
 
 - old version of merge_m4b.bat allowed for custom filename entry, edited to only export as input.mp4
-# merge_m4b.bat
+- merge_m4b.bat
 > call direnhanced_m4b.bat > fileList.txt
 > set /p FILENAME=Type Desired Output file name then hit ENTER to continue...
 > ffmpeg -f concat -safe 0 -i fileList.txt -c copy "%FILENAME%.mp4"
