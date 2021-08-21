@@ -9,3 +9,4 @@ del meta2.txt
 del meta3.txt
 del metadatatemp.txt
 del fileList.txt
+del inputmeta.txt
