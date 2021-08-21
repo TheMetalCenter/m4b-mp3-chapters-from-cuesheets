@@ -3,11 +3,13 @@ A clunky but mostly automated way to merge audiobooks without an encoding step (
 
 This is cobbled together from various scripts and software from github, googling, etc. 
 
-Full credit to creators of borrowed scripts/software (TestToCue, mergechapters.py, direnhanced, ffmpeg, mp4chaps, rubycue, mp3directcut)
+Full credit to creators of borrowed scripts/software (TestToCue, mergechapters.py, direnhanced, ffmpeg, mp4chaps, rubycue, mp3directcut, rxrepl)
 
-Not everything that is needed is included in this repository, will also need Ruby, python, rubycue gem and its associated gems, mp3directcut, ffmpeg (obviously), mp3tag, rxrepl
+Not everything that is needed is included in this repository, will also need Ruby, python, rubycue gem and its associated gems, mp3directcut, ffmpeg (obviously), mp3tag, rxrepl, (findstr is also used but should be pre-installed on windows, found in system32 if not and can copy it into working directory)
 
 Any suggestions on how to improve process is appreciated
+
+NOTE: Every script and bat file (except ruby gems) needs to be in the working directory for this method to work correctly.
 
 General work flow is:
 1. Merge multiple files to a single file mp3/mp4 file (should be called input.mp3 or m4b to work with .bat files)
@@ -37,13 +39,8 @@ General work flow is:
 	5. Use text2cue.bat or drag generated .txt file onto TextToCue.exe file, which generates a .cue file
 		# if you manually do it, ensure the the cue has a TITLE field before next step
 	6. Run merge_m4b.bat to merge m4b files to a single input.mp4 file
-	7. Run cue2metadata.bat and merge_inputmp4_with_metadata.bat or open cmd in current directory and type the following (be sure to replace FILE/input/output with actual desired filenames):
-		> cue2ffmeta.rb export_new.cue > metadata.txt
-		> ffmpeg -i input.mp4 -i metadata.txt -map_metadata 1 -codec copy output.mp4
-	8. Run mp4tom4b.bat (converts fmpeg embedded chapters to proper m4b quicktime format)
-
-
-
+	7. Run cue2metadata.bat and merge_inputmp4_with_metadata.bat
+	8. Run mp4tom4b.bat (converts fmpeg embedded chapters to proper m4b quicktime format), will also move output into its own folder and rename based on title field
 
 ### Creating single M4B file that retains chapers from two or more m4b files with embedded chapters
 	0. requires:
@@ -57,8 +54,6 @@ General work flow is:
 		> ffmpeg -i output.mp4 -map 0 -map -0:v -c copy final.mp4
 	3. change .mp4 to .m4b
 	4. check with ffmpeg -i *.m4b or MediaInfo to ensure chapters are present
-	
-	
 	
 ### Creating single MP3 file with embedded chapters from individual chapterized mp3 files
 	0. requires:
@@ -88,14 +83,7 @@ General work flow is:
 	5. Use text2cue.bat or drag generated .txt file onto TextToCue.exe file, which generates a .cue file
 			# if you manually do it, ensure the the cue has a TITLE field before next step
 	6. Run merge_mp3.bat to merge mp3 files to a single input.mp3 file
-	7. Run cue2metadata.bat and merge_inputmp3_with_metadata.bat or open cmd in current directory and type the following (be sure to replace FILE/input/output with actual desired filenames):
-		> cue2ffmeta.rb FILE.cue > metadata.txt
-		> ffmpeg -i input.mp3 -i metadata.txt -map_metadata 1 -codec copy output.mp3
-	8. Can Double check .mp3 with:
-		> ffmpeg -i output.mp3
-		
-		
-		
+	7. Run cue2metadata.bat and merge_inputmp3_with_metadata.bat, will also move output into its own folder and rename based on title field
 		
 ### Creating single MP3 file with embedded chapters from randomly split mp3 files
 	0. requires:
@@ -126,18 +114,8 @@ General work flow is:
 		# Also can cross references number of chapters with numbers of pauses using epub
 	8. File > Save as .cue
 	9. Open up .cue file in text editor, add PERFORMER "Author Name" as second line and change TITLE as desired
-	10. Run cue2metadata.bat and merge_inputmp3_with_metadata.bat or open cmd in current directory and type the following (be sure to replace FILE/input/output with actual desired filenames):
-		> cue2ffmeta.rb FILE.cue > metadata.txt
-		> ffmpeg -i input.mp3 -i metadata.txt -map_metadata 1 -codec copy output.mp3
-	11. Can Double check .mp3 with:
-		> ffmpeg -i output.mp3
-		
-		
-		
-		
-		
-		
-		
+	10. Run cue2metadata.bat and merge_inputmp3_with_metadata.bat, will also move output into its own folder and rename based on title field
+	
 ### other useful info
 - included cleanup.bat which can delete all related files (includes input, doesn't delete output) for "quick" batch conversion
 
@@ -151,6 +129,9 @@ General work flow is:
 > set /p FILENAME=Type Desired Output file name then hit ENTER to continue...
 > ffmpeg -f concat -safe 0 -i fileList.txt -c copy "%FILENAME%.mp4"
 > endlocal
+
+- You can double check files with :
+		> ffmpeg -i file.ext OR ffprobe file.ext
 
 - To export metadata from a file, also have export.bat
 > ffmpeg -i FILE.ext -f ffmetadata in.txt
