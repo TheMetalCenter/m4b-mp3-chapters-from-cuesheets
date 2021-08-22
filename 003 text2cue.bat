@@ -1,15 +1,17 @@
 ::The following will check for improper format of export tracklist
-@ECHO OFF
-rxrepl.exe -f export.txt -o formatcheck.txt -s "0.\:..\:.." -r "WARNING"
+@echo off
+rxrepl.exe -f list.txt -o formatcheck.txt -s "0.\:..\:.." -r "WARNING"
 findstr /m "WARNING" formatcheck.txt
 if %errorlevel%==0 (echo WARNING: Unable to convert properly. Please check your exported tracklist for improper HH:MM:SS format and convert them to MM:SS)
 if %errorlevel%==0 (pause)
 if %errorlevel%==0 (del formatcheck.txt)
 if %errorlevel%==0 (EXIT \B)
 if %errorlevel%==1 (echo No warnings found, continuing...)
-if %errorlevel%==1 (del formatcheck.txt)
+@echo off
+if %errorlevel%==1 (del formatcheck.txt 2>NUL)
 
 TextToCue.exe "list.txt"
+ren list_new.cue cuesheet.cue
 
 ::The following is to add a placeholder TITLE field to prevent ffmpeg from confusing first chapter's title with the whole file's title
 @ECHO OFF
