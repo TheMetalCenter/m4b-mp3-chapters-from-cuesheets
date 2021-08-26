@@ -2,6 +2,7 @@ del list.txt
 del formatcheck.txt
 del cuesheet.cue
 del input.mp3
+del input.m4b
 del metadata.txt
 del Cover.jpg
 del meta1.txt
