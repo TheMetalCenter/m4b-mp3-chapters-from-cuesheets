@@ -1,5 +1,6 @@
 ## clunky-audiobook-chapterizing
-A clunky but mostly automated way to merge audiobooks without an encoding step (remuxing only) to either single file m4b files with quicktime/nero chapters or single file mp3s with id3v2 chapters (not widely supported unfortunately)
+- A clunky but mostly automated way to merge audiobooks without an encoding step (remuxing only) to either single file m4b files with quicktime/nero chapters or single file mp3s with id3v2 chapters using cuesheets
+	- Good breakdown of different chapter types: https://github.com/Zeugma440/atldotnet/wiki/Focus-on-Chapter-metadata
 
 This is cobbled together from various scripts and software from github, googling, etc, but the majority is in .bat files so Windows is required (probably would be straightforward to convert to python/ruby except for the executables)
 
@@ -23,7 +24,7 @@ This is cobbled together from various scripts and software from github, googling
 
 #### General work flow is:
 1. Merge multiple audio files to a single mp3/mp4 file
-2. Obtain a .cue with desired chapter info (via a tracklist from mp3tag or pause detection by mp3directcut)
+2. Obtain a .cue with desired chapter info (via a tracklist from mp3tag or pause detection by mp3directcut, I recommend using macros on Notepad++ to quickly edit chapter titles)
 3. Convert .cue to ffmetadata
 4. Combine ffmetadata with mp3/mp4 file
 
