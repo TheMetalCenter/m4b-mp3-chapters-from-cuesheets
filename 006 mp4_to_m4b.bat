@@ -15,6 +15,7 @@ echo  CONVERTING COMPLETE, moving file to folder
 
 ::Renames output to album and moves to folder of same name
 rename output.m4b "%name%.m4b"
+rename cuesheet.cue "%name%.cue
 md "%name%"
 MOVE "%name%.m4b" "%name%"
 del title.txt

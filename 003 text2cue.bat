@@ -1,3 +1,9 @@
+@echo off
+if exist "list.txt" (
+goto :convert
+) else goto :stop
+
+:convert
 ::The following will check for improper format of export tracklist
 @echo off
 rxrepl.exe -f list.txt -o formatcheck.txt -s "0.\:..\:.." -r "WARNING"
@@ -23,3 +29,9 @@ echo %text% > cuesheet.cue
 :: Appends the old contents & deletes the temporary file
 type temp.txt >> cuesheet.cue
 del temp.txt
+exit
+
+:stop
+echo MISSING list.txt
+pause
+exit
