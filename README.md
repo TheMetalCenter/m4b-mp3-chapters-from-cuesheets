@@ -7,19 +7,19 @@ This is cobbled together from various scripts and software from github, googling
 #### Full credit to creators of borrowed scripts/software (included in repository, mainly for redundancy, will remove if asked):
 - [TestToCue](https://community.mp3tag.de/t/generate-cue-file-from-tracklist/11750/13)
 - [mergechapters.py](https://gist.github.com/cliss/53136b2c69526eeed561a5517b23cefa)
-- [mp4_to_m4b.bat + mp4chaps] http://pds16.egloos.com/pds/200910/19/90/mp4_to_m4b.zip) (the .exe originates from MP4v2)
+- [mp4_to_m4b.bat + mp4chaps](http://pds16.egloos.com/pds/200910/19/90/mp4_to_m4b.zip) (the .exe originates from MP4v2)
 - [cue2ffmeta](https://gist.github.com/remko/e15c4fe26d479e134f36#file-cue2ffmeta-rb)
 - [rubycue](https://rubygems.org/gems/rubycue/versions/0.1.0, see note below)
 
 #### Not everything that is needed is included in this repository! You will also need:
-- ffmpeg (tested with 4.4) https://git.ffmpeg.org/ffmpeg.git
+- [ffmpeg (tested with 4.4)](https://git.ffmpeg.org/ffmpeg.git)
 - python3
 - Ruby
-- rubycue (https://rubygems.org/gems/rubycue/versions/0.1.0) 
+- [rubycue](https://rubygems.org/gems/rubycue/versions/0.1.0) 
 	- An edited cuesheet.rb is provided, which allows for 16+ hour books and turns off validation parsing, it should be placed in your-ruby-install-location\Ruby30-x64\lib\ruby\gems\3.0.0\gems\rubycue-0.1.0\lib\rubycue"
-- mp3directcut (v1.99 tested) https://mpesch3.de/
-- mp3tag https://www.mp3tag.de/en/download.html
-- rxrepl (optional, checks for formatting errors but the .bat still works if it isn't present) https://sites.google.com/site/regexreplace/
+- [mp3directcut](https://mpesch3.de/) (v1.99 tested)
+- [mp3tag](https://www.mp3tag.de/en/download.html)
+- [rxrepl](https://sites.google.com/site/regexreplace/) (optional, checks for formatting errors but the .bat still works if it isn't present)
 - findstr (should be pre-installed on windows, if cmd doesn't recognize it you can find it in system32 and can copy it into working directory)
 
 #### General work flow is:
@@ -45,7 +45,7 @@ This is cobbled together from various scripts and software from github, googling
 	- you may want to backup your cuesheet before running this!
 
 ### Creating single M4B file with embedded chapters from individual chapterized m4b files
-	0. Note that AudioBookConverter (https://github.com/yermak/AudioBookConverter) is a good program that can handle this scenario pretty well, so check that out if you want a GUI, can be buggy at times
+	0. Note that [AudioBookConverter](https://github.com/yermak/AudioBookConverter) is a good program that can handle this scenario pretty well, so check that out if you want a GUI, can be buggy at times
 	1. Add m4b files to bin folder of ffmpeg (4.4 plus)
 	2. Import tracks into mp3tag
 	3. Edit "title" fields as desired (full chapter names will take longer than simple Chapter 01) and ensure "track" fields are filled with integers (can use mp3tag > tools > auto number wizard)
