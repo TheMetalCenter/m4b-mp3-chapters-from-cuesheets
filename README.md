@@ -107,15 +107,18 @@ This is cobbled together from various scripts and software from github, googling
 	9. Once satisfied with your .cue, delete reencoded output.mp4
 	10. Run cue2metadata.bat and merge_inputmp4_with_metadata.bat, will also move output into its own folder and rename based on title field
 	
-### Creating single M4B file that retains chapers from two or more m4b files with embedded chapters
-	1. change .m4b to .mp4
-	2. open cmd in current directory:
-		> py ./mergechapters.py input1.mp4 input2.mp4 output.mp4
-	3. Remove extraneous video stream if needed
-		> ffmpeg -i output.mp4 -map 0 -map -0:v -c copy final.mp4
-	3. change .mp4 to .m4b
-	4. check with ffmpeg -i *.m4b or MediaInfo to ensure chapters are present
-	
+### Creating single M4B file that retains chapers from two m4b files with embedded chapters (can repeat if more than two files)
+	1. change the names of the two m4b files to be merged to input1.mp4 and input2.mp4
+	2. Run merge2m4b.bat, which will merge the two files, remove any video streams (from embedded covers) then run mp4_to_m4b.bat
+	3. Can check with ffmpeg -i *.m4b or MediaInfo to ensure chapters are present
+	4. If there is more than two m4b files, repeat steps for each additional part
+
+	Optional manual use:
+	1. call script with
+		> py ./mergechapters.py input1.mp4 input2.mp4 merged.mp4
+		Then if necessary (required if your files had a cover embedded) run:
+		> ffmpeg -i merged.mp4 -map 0 -map -0:v -c copy output.mp4	
+		
 ### other useful info
 - quick remux can fix file errors
 > ffmpeg -i %FILENAME%.ext -c copy %FILENAME%.mp4
