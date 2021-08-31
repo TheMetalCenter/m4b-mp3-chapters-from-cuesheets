@@ -5,11 +5,10 @@
 This is cobbled together from various scripts and software from github, googling, etc, but the majority is in .bat files so Windows is required (probably would be straightforward to convert to python/ruby except for the executables)
 
 #### Full credit to creators of borrowed scripts/software (included in repository, mainly for redundancy, will remove if asked):
-- [TestToCue](https://community.mp3tag.de/t/generate-cue-file-from-tracklist/11750/13)
-- [mergechapters.py](https://gist.github.com/cliss/53136b2c69526eeed561a5517b23cefa)
+- [TestToCue.exe](https://community.mp3tag.de/t/generate-cue-file-from-tracklist/11750/13)
+- [mergechapters.py](https://gist.github.com/cliss/53136b2c69526eeed561a5517b23cefa) (small edit made to remove extraneous video streams from embedded covers)
 - [mp4_to_m4b.bat + mp4chaps](http://pds16.egloos.com/pds/200910/19/90/mp4_to_m4b.zip) (the .exe originates from MP4v2)
-- [cue2ffmeta](https://gist.github.com/remko/e15c4fe26d479e134f36#file-cue2ffmeta-rb)
-- [rubycue](https://rubygems.org/gems/rubycue/versions/0.1.0) (see note below)
+- [cue2ffmeta.rb](https://gist.github.com/remko/e15c4fe26d479e134f36#file-cue2ffmeta-rb)
 
 #### Not everything that is needed is included in this repository! You will also need:
 - [ffmpeg (tested with 4.4)](https://git.ffmpeg.org/ffmpeg.git)
