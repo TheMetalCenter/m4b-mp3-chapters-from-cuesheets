@@ -9,7 +9,7 @@ This is cobbled together from various scripts and software from github, googling
 - [mergechapters.py](https://gist.github.com/cliss/53136b2c69526eeed561a5517b23cefa)
 - [mp4_to_m4b.bat + mp4chaps](http://pds16.egloos.com/pds/200910/19/90/mp4_to_m4b.zip) (the .exe originates from MP4v2)
 - [cue2ffmeta](https://gist.github.com/remko/e15c4fe26d479e134f36#file-cue2ffmeta-rb)
-- [rubycue](https://rubygems.org/gems/rubycue/versions/0.1.0, see note below)
+- [rubycue](https://rubygems.org/gems/rubycue/versions/0.1.0) (see note below)
 
 #### Not everything that is needed is included in this repository! You will also need:
 - [ffmpeg (tested with 4.4)](https://git.ffmpeg.org/ffmpeg.git)
