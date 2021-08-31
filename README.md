@@ -1,15 +1,15 @@
 ## m4b-mp3-audiobook-chapters-from-cuesheets
 - A clunky but mostly automated way to merge audiobooks without an encoding step (remuxing only) to either single file m4b files with quicktime/nero chapters or single file mp3s with id3v2 chapters using cuesheets
-	- Good breakdown of different chapter types: https://github.com/Zeugma440/atldotnet/wiki/Focus-on-Chapter-metadata
+	- [Good breakdown of different chapter types](https://github.com/Zeugma440/atldotnet/wiki/Focus-on-Chapter-metadata)
 
 This is cobbled together from various scripts and software from github, googling, etc, but the majority is in .bat files so Windows is required (probably would be straightforward to convert to python/ruby except for the executables)
 
 #### Full credit to creators of borrowed scripts/software (included in repository, mainly for redundancy, will remove if asked):
-- TestToCue (https://community.mp3tag.de/t/generate-cue-file-from-tracklist/11750/13)
-- mergechapters.py (https://gist.github.com/cliss/53136b2c69526eeed561a5517b23cefa)
-- mp4_to_m4b.bat + mp4chaps (http://pds16.egloos.com/pds/200910/19/90/mp4_to_m4b.zip, the .exe originates from MP4v2)
-- cue2ffmeta (https://gist.github.com/remko/e15c4fe26d479e134f36#file-cue2ffmeta-rb)
-- rubycue (https://rubygems.org/gems/rubycue/versions/0.1.0, see note below)
+- [TestToCue](https://community.mp3tag.de/t/generate-cue-file-from-tracklist/11750/13)
+- [mergechapters.py](https://gist.github.com/cliss/53136b2c69526eeed561a5517b23cefa)
+- [mp4_to_m4b.bat + mp4chaps] http://pds16.egloos.com/pds/200910/19/90/mp4_to_m4b.zip) (the .exe originates from MP4v2)
+- [cue2ffmeta](https://gist.github.com/remko/e15c4fe26d479e134f36#file-cue2ffmeta-rb)
+- [rubycue](https://rubygems.org/gems/rubycue/versions/0.1.0, see note below)
 
 #### Not everything that is needed is included in this repository! You will also need:
 - ffmpeg (tested with 4.4) https://git.ffmpeg.org/ffmpeg.git
