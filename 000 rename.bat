@@ -10,3 +10,7 @@ FOR %%i IN (*.mp3) DO (
 FOR %%i IN (*.cue) DO (
  rename "%%i" "cuesheet.cue"
 )
+
+FOR %%i IN (*.m4a) DO (
+  rename "%%i" "%%~ni.m4b"
+)

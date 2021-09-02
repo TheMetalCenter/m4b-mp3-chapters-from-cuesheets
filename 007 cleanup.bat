@@ -1,13 +1,16 @@
-del list.txt
-del formatcheck.txt
-del cuesheet.cue
-del input.mp3
-del input.m4b
-del metadata.txt
-del Cover.jpg
-del meta1.txt
-del meta2.txt
-del meta3.txt
-del metadatatemp.txt
-del fileList.txt
-del inputmeta.txt
+del list.txt >nul 2>&1
+del formatcheck.txt >nul 2>&1
+del cuesheet.cue >nul 2>&1
+del input.mp3 >nul 2>&1
+del input.m4b >nul 2>&1
+del metadata.txt >nul 2>&1
+del Cover.jpg >nul 2>&1
+del meta1.txt >nul 2>&1
+del meta2.txt >nul 2>&1
+del meta3.txt >nul 2>&1
+del metadatatemp.txt >nul 2>&1
+del fileList.txt >nul 2>&1
+del inputmeta.txt >nul 2>&1
+del list2.txt >nul 2>&1
+del tmpmeta.txt >nul 2>&1
+del tmp.cue >nul 2>&1

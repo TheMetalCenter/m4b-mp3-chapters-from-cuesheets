@@ -15,25 +15,29 @@ ffprobe output.mp3 -show_entries format_tags=album -of compact=p=0:nk=1 -v 0 > t
 @echo off
 set /p name=< title.txt
 
-::Renames output filename to album field
+::Renames output and cuesheet using album field
 echo renaming output mp3 and cuesheet...
-rename output.mp3 "%name%.mp3"
-rename cuesheet.cue "%name%.cue
+rename output.mp3 "%name%.mp3" >nul 2>&1
+rename cuesheet.cue "%name%.cue" >nul 2>&1
 
-::Moves mp3 to folder of same name
-echo moving output file...
+::Moves mp3 to folder of same name and cuesheet to backup folder
+echo moving output file and backing up cuesheet...
 md "%name%" >nul 2>&1
 MOVE "%name%.mp3" "%name%" >nul 2>&1
+MOVE "%name%.cue" "cuesheet_backup" >nul 2>&1
 
-::Delete temp file
-del title.txt
-
-::If there album field is blank, then the filename instead becomes ".mp3"
-::This will rename it back to output.mp3
+::If there album field is blank, then the filename instead becomes ".mp3" or ".cue"
+::This will rename it to original name
 rename ".mp3" "output.mp3" >nul 2>&1
+rename ".cue" "cuesheetbackup.cue" >nul 2>&1
+
+
+::Delete temp files
+del title.txt >nul 2>&1
 
 ::Pause to make sure chapters look good, can delete if desired
 pause
+call "007 cleanup.bat"
 exit
 
 :stop

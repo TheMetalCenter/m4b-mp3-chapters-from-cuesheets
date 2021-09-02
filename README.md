@@ -11,7 +11,7 @@ This is cobbled together from various scripts and software from github, googling
 - [cue2ffmeta.rb](https://gist.github.com/remko/e15c4fe26d479e134f36#file-cue2ffmeta-rb)
 
 #### Not everything that is needed is included in this repository! You will also need:
-- [ffmpeg (tested with 4.4)](https://git.ffmpeg.org/ffmpeg.git)
+- [ffmpeg](https://git.ffmpeg.org/ffmpeg.git) (tested with 4.4)
 - python3
 - Ruby
 - [rubycue](https://rubygems.org/gems/rubycue/versions/0.1.0) 
