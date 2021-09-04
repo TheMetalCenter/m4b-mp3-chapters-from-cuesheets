@@ -44,17 +44,18 @@
 	1. Add m4b files to bin folder of ffmpeg (4.4 plus)
 	2. Import tracks into mp3tag
 	3. Edit "title" fields as desired (full chapter names will take longer than simple Chapter 01)
-	4. Ensure "track" fields are filled with integers (can use mp3tag > tools > auto number wizard) 
-		- also ensure that the album field contains no characters not allowed in a filename (?, :, etc)
-	5. Select all, right click > export > txt_taglist > Okay to create list.txt file
+		- Ensure Tracknumber fields are filled with integers (can use mp3tag > tools > auto number wizard) 
+		- Ensure the Artist field is not empty
+		- Ensure the Album field contains no characters not allowed in a filename (?, :, etc)
+	4. Select all, right click > export > txt_taglist > Okay to create list.txt file
 		- If this is first time, you will need to first edit "txt_taglist" and replace current text with below and save changes
 			$filename(txt,utf-8)$loop(%_path%)%track%.%artist% - %title% - $div(%_length_seconds%,60)':'$num($mod(%_length_seconds%,60),2)
 			$loopend()
-	6. Use "m4b_text2cue.bat"
+	5. Use "m4b_text2cue.bat"
 		- will generate a .cue file
-	7. Run m4b_merge-files.bat
+	6. Run m4b_merge-files.bat
 		- will merge m4b files to a single input.mp4 file (make sure tracks are in proper order by filename)
-	8. Run m4b_add-chapters.bat 
+	7. Run m4b_add-chapters.bat 
 		- will add chapters then convert fmpeg embedded chapters to proper m4b quicktime format
 		- this will also attempt to rename and move output into its own folder based on album field
 
@@ -62,17 +63,18 @@
 	1. Add mp3 files to bin folder of ffmpeg (4.4 plus)
 	2. Import tracks into mp3tag
 	3. Edit "title" fields as desired (full chapter names will take longer than simple Chapter 01)
-	4. Ensure "track" fields are filled with integers (can use mp3tag > tools > auto number wizard) 
-		- also ensure that the album field contains no characters not allowed in a filename (?, :, etc)
-	5. Select all, right click > export > txt_taglist > Okay to create list.txt file
+		- Ensure Tracknumber fields are filled with integers (can use mp3tag > tools > auto number wizard) 
+		- Ensure the Artist field is not empty
+		- Ensure the Album field contains no characters not allowed in a filename (?, :, etc)
+	4. Select all, right click > export > txt_taglist > Okay to create list.txt file
 		- If this is first time, you will need to first edit "txt_taglist" and replace current text with below and save changes
 			$filename(txt,utf-8)$loop(%_path%)%track%.%artist% - %title% - $div(%_length_seconds%,60)':'$num($mod(%_length_seconds%,60),2)
 			$loopend()
-	6. Use "mp3_text2cue.bat"
+	5. Use "mp3_text2cue.bat"
 		- will generate a .cue file
-	7. Run mp3_merge-files.bat
+	6. Run mp3_merge-files.bat
 		- will merge mp3 files to a single input.mp3 file (ensure tracks are in proper order by filename)
-	8. Run mp3_add-chapters.bat 
+	7. Run mp3_add-chapters.bat 
 		- will add chapters in id3v2.3 format
 		- this will also attempt to rename and move output into its own folder based on album field
 		
