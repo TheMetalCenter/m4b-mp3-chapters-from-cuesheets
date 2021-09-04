@@ -29,9 +29,9 @@
 
 ### Installation
 - Install the above required programs separately
-- Place all the .bat files and cue2ffmeta.rb and mergechapters.py in the bin folder of ffmpeg (as well as rxrepl and findstr if needed), this is your working directory
+- Place all the .bat files and cue2ffmeta.rb and mergechapters_ab.py in the bin folder of ffmpeg (as well as findstr if needed), this is your working directory
 - Ensure cuesheet.rb in your rubycue installation was replaced with the copy provided
-- Go to the desired workflow below and follow its steps
+- Go to the desired scenario below and follow its steps
 
 #### Working files should be called:
 - input.mp3/.mp4 (from merging individual chapters or existing single file)
@@ -47,7 +47,7 @@
 	2. Import tracks into mp3tag
 	3. Edit "title" fields as desired (full chapter names will take longer than simple Chapter 01)
 	4. Ensure "track" fields are filled with integers (can use mp3tag > tools > auto number wizard) 
-		- also make sure that the album field contains no characters not allowed in a filename (?, :, etc)
+		- also ensure that the album field contains no characters not allowed in a filename (?, :, etc)
 	5. Select all, right click > export > txt_taglist > Okay to create list.txt file
 		- If this is first time, you will need to first edit "txt_taglist" and replace current text with below and save changes
 			$filename(txt,utf-8)$loop(%_path%)%track%.%artist% - %title% - $div(%_length_seconds%,60)':'$num($mod(%_length_seconds%,60),2)
@@ -65,7 +65,7 @@
 	2. Import tracks into mp3tag
 	3. Edit "title" fields as desired (full chapter names will take longer than simple Chapter 01)
 	4. Ensure "track" fields are filled with integers (can use mp3tag > tools > auto number wizard) 
-		- also make sure that the album field contains no characters not allowed in a filename (?, :, etc)
+		- also ensure that the album field contains no characters not allowed in a filename (?, :, etc)
 	5. Select all, right click > export > txt_taglist > Okay to create list.txt file
 		- If this is first time, you will need to first edit "txt_taglist" and replace current text with below and save changes
 			$filename(txt,utf-8)$loop(%_path%)%track%.%artist% - %title% - $div(%_length_seconds%,60)':'$num($mod(%_length_seconds%,60),2)
