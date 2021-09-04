@@ -11,13 +11,13 @@
 - [mergechapters.py](https://gist.github.com/cliss/53136b2c69526eeed561a5517b23cefa) (small edit made to remove extraneous video streams from embedded covers)
 
 #### Not everything that is required is included in this repository! You will also need:
-- [ffmpeg](https://git.ffmpeg.org/ffmpeg.git) (tested with 4.4)
-- Ruby
+- [ffmpeg.exe & ffprobe.exe](https://www.gyan.dev/ffmpeg/builds/) (tested with 4.4)
+- [Ruby](https://www.ruby-lang.org/en/downloads/)
 - [rubycue](https://rubygems.org/gems/rubycue/versions/0.1.0) 
 	- An edited cuesheet.rb is provided, which allows for 16+ hour books and turns off validation parsing, it should be placed in your-ruby-install-location\Ruby30-x64\lib\ruby\gems\3.0.0\gems\rubycue-0.1.0\lib\rubycue"
 - [mp3directcut](https://mpesch3.de/) (v1.99 tested)
 - [mp3tag](https://www.mp3tag.de/en/download.html)
-- python3 (optional, only for Scenario 5)
+- [python3](https://www.python.org/downloads/) (optional, only for Scenario 5)
 
 #### General work flow is:
 1. Merge multiple audio files to a single mp3/mp4 file
