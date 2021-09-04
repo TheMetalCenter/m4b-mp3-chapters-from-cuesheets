@@ -5,10 +5,10 @@
 - Windows is required (majority is written in batch files along with executables)
 
 #### Full credit to creators of borrowed scripts/software (included in repository for convenience will remove if asked):
-- [TestToCue.exe](https://community.mp3tag.de/t/generate-cue-file-from-tracklist/11750/13)
-- [mergechapters.py](https://gist.github.com/cliss/53136b2c69526eeed561a5517b23cefa) (small edit made to remove extraneous video streams from embedded covers)
-- [mp4chaps](https://code.google.com/archive/p/mp4v2/) (originates from MP4v2)
 - [cue2ffmeta.rb](https://gist.github.com/remko/e15c4fe26d479e134f36#file-cue2ffmeta-rb)
+- [TextToCue.exe](https://community.mp3tag.de/t/generate-cue-file-from-tracklist/11750/13)
+- [mp4chaps](https://code.google.com/archive/p/mp4v2/) (originates from MP4v2)
+- [mergechapters.py](https://gist.github.com/cliss/53136b2c69526eeed561a5517b23cefa) (small edit made to remove extraneous video streams from embedded covers)
 
 #### Not everything that is required is included in this repository! You will also need:
 - [ffmpeg](https://git.ffmpeg.org/ffmpeg.git) (tested with 4.4)
