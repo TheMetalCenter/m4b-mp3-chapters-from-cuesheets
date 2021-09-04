@@ -28,8 +28,6 @@ rename ".m4b" "output.m4b" >nul 2>&1
 
 ::Delete temp files
 del title.txt >nul 2>&1
-pause
-
 exit
 
 :stop
