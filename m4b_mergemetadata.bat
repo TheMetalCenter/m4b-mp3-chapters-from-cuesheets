@@ -10,6 +10,11 @@ echo merging mp4 with metadata
 ffmpeg -i input.mp4 -f ffmetadata -i metadata.txt -map_metadata 0 -map_chapters 1 -c copy output.mp4
 pause
 
+@echo off
+::Copies the album field to a temp text file and sets variable
+ffprobe output.mp4 -show_entries format_tags=album -of compact=p=0:nk=1 -v 0 > title.txt
+set /p name=< title.txt
+
 ::Converts all mp4 to m4b with nero/quicktime chapters (will fail on input.mp4 since no chapters)
 FOR %%i IN (output.mp4) DO (
  echo converting %%i
