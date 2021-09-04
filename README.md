@@ -18,8 +18,6 @@
 - [mp3directcut](https://mpesch3.de/) (v1.99 tested)
 - [mp3tag](https://www.mp3tag.de/en/download.html)
 - python3 (optional, only for Scenario 5)
-- findstr (should be pre-installed on windows)
-	- if cmd doesn't recognize it you can copy it from system32 into the working directory
 
 #### General work flow is:
 1. Merge multiple audio files to a single mp3/mp4 file
@@ -29,7 +27,7 @@
 
 ### Installation
 - Install the above required programs separately
-- Place all the .bat files and cue2ffmeta.rb and mergechapters_ab.py in the bin folder of ffmpeg (as well as findstr if needed), this is your working directory
+- Place all the .bat files and cue2ffmeta.rb and mergechapters_ab.py in the bin folder of ffmpeg (this is your working directory)
 - Ensure cuesheet.rb in your rubycue installation was replaced with the copy provided
 - Go to the desired scenario below and follow its steps
 
