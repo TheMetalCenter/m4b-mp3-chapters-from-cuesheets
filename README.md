@@ -2,7 +2,7 @@
 - Mostly automated way to merge audiobooks without quality loss from reencoding (remuxing only) to either single file m4b files with quicktime/nero chapters or single file mp3s with id3v2 chapters using cuesheets
 	- [Good breakdown of different chapter types](https://github.com/Zeugma440/atldotnet/wiki/Focus-on-Chapter-metadata)
 
-Windows is required (majority is written in batch files along with executables)
+- Windows is required (majority is written in batch files along with executables)
 
 #### Full credit to creators of borrowed scripts/software (included in repository for convenience will remove if asked):
 - [TestToCue.exe](https://community.mp3tag.de/t/generate-cue-file-from-tracklist/11750/13)
@@ -75,7 +75,7 @@ Windows is required (majority is written in batch files along with executables)
 	6. Use "mp3_text2cue.bat"
 		- will generate a .cue file
 	7. Run mp3_merge-files.bat
-		- will merge mp3 files to a single input.mp3 file (make sure tracks are in proper order by filename)
+		- will merge mp3 files to a single input.mp3 file (ensure tracks are in proper order by filename)
 	8. Run mp3_add-chapters.bat 
 		- will add chapters in id3v2.3 format
 		- this will also attempt to rename and move output into its own folder based on album field
@@ -83,7 +83,7 @@ Windows is required (majority is written in batch files along with executables)
 ### Scenario 3: Creating single MP3 file with embedded chapters from randomly split mp3 files
 	1. Add mp3 files to bin folder of ffmpeg (4.4 plus)
 	2. Run mp3_merge-files.bat
-		- will merge mp3 files to a single input.mp3 file (make sure tracks are in proper order by filename)
+		- will merge mp3 files to a single input.mp3 file (ensure tracks are in proper order by filename)
 	3. Drag merged input.mp3 into mp3directcut
 	4. Go to special > pause detection, try -44.5 dB, 2.9 s, 10 frames as a starting point
 	5. Wait for it to detect chapter breaks, click close once it no longer says "stop"
@@ -101,7 +101,7 @@ Windows is required (majority is written in batch files along with executables)
 		- this will also attempt to rename and move output into its own folder based on album field
 	
 ### Scenario 4: Creating single M4B file with embedded chapters from randomly split m4b files
-	0. Since mp3directcut doesn't support m4b we will make a *temporary* reencode of the file to generate the cue sheet
+	0. Since mp3directcut doesn't support m4b we will make a *temporary* reencode to generate the .cue
 	1. Add m4b files to bin folder of ffmpeg (4.4 plus)
 	2. Run m4b_merge-files.bat
 		- will merge m4b files to a single input.mp4 file (make sure tracks are in proper order by filename)
