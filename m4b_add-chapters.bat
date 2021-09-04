@@ -35,6 +35,7 @@ FOR %%i IN (output.mp4) DO (
  mp4chaps.exe -QuickTime -convert "%%i"
  rename "%%i" "%%~ni.m4b"
 )
+
 echo Renaming output and cuesheet...
 ::Renames output and cuesheet using album field
 echo renaming output m4b and cuesheet...
@@ -45,23 +46,24 @@ rename cuesheet.cue "%name%.cue" >nul 2>&1
 echo Moving output and backing up cuesheet...
 md "%name%" >nul 2>&1
 MOVE "%name%.m4b" "%name%" >nul 2>&1
+rename ".cue" "cuesheetbackup.cue" >nul 2>&1
 MOVE "%name%.cue" "cuesheet_backup" >nul 2>&1
 
 ::If there album field is blank, then the filename instead becomes ".m4b" or ".cue"
 ::This will rename it to original name
 rename ".m4b" "output.m4b" >nul 2>&1
-rename ".cue" "cuesheetbackup.cue" >nul 2>&1
 
 :cleanup
 del title.txt >nul 2>&1
 del length.txt >nul 2>&1
-del metadata.txt >nul 2>&1
+
 
 echo Make sure output looks good, input will be deleted
 pause
 
 :cleanup2
 del input.mp4 >nul 2>&1
+del metadata.txt >nul 2>&1
 del list.txt >nul 2>&1
 exit
 

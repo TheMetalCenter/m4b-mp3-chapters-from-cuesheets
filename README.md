@@ -83,7 +83,7 @@
 	2. Run mp3_merge-files.bat
 		- will merge mp3 files to a single input.mp3 file (ensure tracks are in proper order by filename)
 	3. Drag merged input.mp3 into mp3directcut
-	4. Go to special > pause detection, try -44.5 dB, 2.9 s, 10 frames as a starting point
+	4. Go to special > pause detection, try -44.5 dB, 2.9 s, -6 frames as a starting point
 	5. Wait for it to detect chapter breaks, click close once it no longer says "stop"
 	6. Check detected chapters with the >| dotted line button
 		- If undercounts chapters, repeat step 4 with lower seconds or manually find chapters to add 
@@ -106,8 +106,7 @@
 	3. Open up a cmd terminal in the current directory and type:
 	> ffmpeg -i input.mp4 output.mp3
 	3. Drag reencoded mp3 file into mp3directcut
-	4. Go to special > pause detection
-	# Try -44.5 dB, 2.9 s, 10 frames
+	4. Go to special > pause detection, Try -44.5 dB, 2.9 s, -6 frames as starting point
 	5. Wait for it to detect chapter breaks, click close once it no longer says "stop"
 	6. Check detected chapters with the >| dotted line button
 		- If undercounts chapters, repeat step 4 with lower seconds or manually find chapters to add 
@@ -131,12 +130,6 @@
 	3. Can check with ffmpeg -i *.m4b or MediaInfo to ensure chapters are present
 	4. If there is more than two m4b files, repeat steps for each additional part
 
-	Optional manual use:
-	1. call script with
-		> py ./mergechapters.py input1.mp4 input2.mp4 merged.mp4
-		Then if necessary (required if your files had a cover embedded) run:
-		> ffmpeg -i merged.mp4 -map 0 -map -0:v -c copy output.mp4	
-		
 ### Scenario 6: Changing Existing Chapter Information in M4B or MP3
 	1. Add the file to bin folder of ffmpeg (4.4 plus)
 	2. Rename the file to export.mp3 or export.m4b

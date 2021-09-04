@@ -36,12 +36,12 @@ rename cuesheet.cue "%name%.cue" >nul 2>&1
 echo Moving output file and backing up cuesheet...
 md "%name%" >nul 2>&1
 MOVE "%name%.mp3" "%name%" >nul 2>&1
+rename ".cue" "cuesheetbackup.cue" >nul 2>&1
 MOVE "%name%.cue" "cuesheet_backup" >nul 2>&1
 
 ::If there album field is blank, then the filename instead becomes ".mp3" or ".cue"
 ::This will rename it to original name
 rename ".mp3" "output.mp3" >nul 2>&1
-rename ".cue" "cuesheetbackup.cue" >nul 2>&1
 
 :cleanup
 del title.txt >nul 2>&1

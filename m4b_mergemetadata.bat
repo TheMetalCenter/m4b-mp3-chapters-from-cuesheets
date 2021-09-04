@@ -8,6 +8,7 @@ goto :merge
 :merge
 echo merging mp4 with metadata
 ffmpeg -i input.mp4 -f ffmetadata -i metadata.txt -map_metadata 0 -map_chapters 1 -c copy output.mp4
+echo Check output, will delete input
 pause
 
 @echo off
@@ -33,6 +34,8 @@ rename ".m4b" "output.m4b" >nul 2>&1
 
 ::Delete temp files
 del title.txt >nul 2>&1
+del input.mp4 >nul 2>&1
+del metadata.txt >nul 2>&1
 exit
 
 :stop
