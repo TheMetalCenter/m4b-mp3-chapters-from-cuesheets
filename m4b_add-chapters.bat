@@ -66,6 +66,6 @@ del list.txt >nul 2>&1
 exit
 
 :stop
-echo MISSING input.mp4 and/or metadata.txt
+echo MISSING input.mp4 and/or cuesheet.txt
 pause
 exit
