@@ -104,7 +104,7 @@
 	0. Since mp3directcut doesn't support m4b we will make a *temporary* reencode to generate the .cue
 	1. Add m4b files to bin folder of ffmpeg (4.4 plus)
 	2. Run m4b_merge-files.bat
-		- will merge m4b files to a single input.mp4 file (make sure tracks are in proper order by filename)
+		- will merge m4b files to a single input.mp4 file (ensure tracks are in proper order by filename)
 	3. Open up a cmd terminal in the current directory and type:
 	> ffmpeg -i input.mp4 output.mp3
 	3. Drag reencoded mp3 file into mp3directcut
