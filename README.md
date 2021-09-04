@@ -152,7 +152,6 @@
 - Also, you can copy and paste chapter titles from Calibre's Table Of Contents viewer if you have ebook
 
 - renamefiles.bat is just a lazy way to rename any .mp3/mp4 and .cue (should only have one each) to input.mp3/mp4 and cuesheet.cue
-- renamefromlist.bat is included but has a rare use case, I used it to quickly overwrite bad filenames with good filenames from two directories
 
 - You can double check chapters with:
 > ffmpeg -i file.ext OR ffprobe file.ext
