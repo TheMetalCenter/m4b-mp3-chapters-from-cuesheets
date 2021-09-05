@@ -1,18 +1,18 @@
 :fix_input
-::This renames inputs to remove all exclamation marks (!), apostrophes ('), and ampersands (&)
 @echo off
+
+::Remove "!" characters:
     setlocal
-    for %%a in (*!*.m4b) do call :remove1 "%%~a"
-:remove1
-    set "FROM=%~1" >nul 2>&1
-    set "TO=%FROM:!=%" >nul 2>&1
-    ren "%FROM%" "%TO%" >nul 2>&1
-    setlocal
-    for %%b in (*'*.m4b) do call :remove2 "%%~b"
-:remove2
-    set "FROM=%~1" >nul 2>&1
-    set "TO=%FROM:'=%" >nul 2>&1
-    ren "%FROM%" "%TO%" >nul 2>&1
+    for %%a in (*!*.m4b) do call :remove "%%~a"
+     
+::Remove "'" characters:
+setlocal EnableDelayedExpansion
+for %%a in ("*'*.m4b") do (
+   set "fileName=%%~NXa"
+   ren "%%a" "!filename:'=!"
+)
+
+::Remove "&" characters:
 setlocal enabledelayedexpansion
 for /f "tokens=*" %%c in ('dir /b *.m4b') do (
   set file=%%c >nul 2>&1
@@ -23,7 +23,6 @@ for /f "tokens=*" %%c in ('dir /b *.m4b') do (
 call :generate_filelist > filelist.txt
 
 :: This copies metadata from the first input file, using temporary files to get formatting correct
-:copy_meta
 SetLocal EnableDelayedExpansion
 set inputfix=filelist.txt
 set outputfix=inputmeta1.txt
@@ -70,3 +69,8 @@ for /f "tokens=*" %%f in ('dir /b *.m4b') do (
   )
 endlocal
 EXIT /B 0
+
+:remove
+    set "FROM=%~1"
+    set "TO=%FROM:!=%"
+    ren "%FROM%" "%TO%"
