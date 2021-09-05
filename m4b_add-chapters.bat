@@ -16,11 +16,14 @@ echo Converting cue to metadata...
 ::Calls cue2ffmeta ruby script to convert cuesheet.cue to ffmetadata in text file
 ::The file will be created even if conversion fails, will be a blank file
 cue2ffmeta.rb cuesheet.cue %length% > metadata.txt
+if %errorlevel%==1 (echo WARNING: Unable to convert properly. Check cuesheet for unsupported special characters)
+if %errorlevel%==1 (goto :stop2)
+if %errorlevel%==0 (echo No warnings found, continuing...)
 
 :merge
 ::Merges input.mp4 with metadata.txt and maps chapters
 echo Merging mp4 with metadata...
-ffmpeg -i input.mp4 -f ffmetadata -i metadata.txt -map_metadata 0 -map_chapters 1 -c copy output.mp4
+ffmpeg -i input.mp4 -f ffmetadata -i metadata.txt -map_metadata 0 -map_chapters 1 -map 0:a:0? -c copy output.mp4
 
 :convertmp4tom4b
 @echo off
@@ -70,4 +73,11 @@ exit
 :stop
 echo MISSING input.mp4 and/or cuesheet.txt
 pause
+exit
+
+:stop2
+echo ERROR in cuesheet conversion, check for special characters
+pause
+del metadata.txt
+del length.txt
 exit

@@ -16,6 +16,9 @@ echo Converting cue to metadata...
 ::Calls cue2ffmeta ruby script to convert cuesheet.cue to ffmetadata in text file
 ::The file will be created even if conversion fails, will be a blank file
 cue2ffmeta.rb cuesheet.cue %length% > metadata.txt
+if %errorlevel%==1 (echo WARNING: Unable to convert properly. Check cuesheet for unsupported special characters)
+if %errorlevel%==1 (goto :stop2)
+if %errorlevel%==0 (echo No warnings found, continuing...)
 
 :merge
 echo Merging mp3 with metadata...
@@ -32,24 +35,21 @@ echo Renaming output mp3 and cuesheet...
 rename output.mp3 "%name%.mp3" >nul 2>&1
 rename cuesheet.cue "%name%.cue" >nul 2>&1
 
-::Moves mp3 to folder of same name and cuesheet to backup folder
+::Attempts to move mp3 to folder of same name and cuesheet to backup folder
 echo Moving output file and backing up cuesheet...
 md "%name%" >nul 2>&1
 MOVE "%name%.mp3" "%name%" >nul 2>&1
-rename ".cue" "cuesheetbackup.cue" >nul 2>&1
+rename ".cue" "cuesheet.cue" >nul 2>&1
 MOVE "%name%.cue" "cuesheet_backup" >nul 2>&1
-
-::If there album field is blank, then the filename instead becomes ".mp3" or ".cue"
-::This will rename it to original name
 rename ".mp3" "output.mp3" >nul 2>&1
 
 :cleanup
 del title.txt >nul 2>&1
 del length.txt >nul 2>&1
-del metadata.txt >nul 2>&1
 
 echo Make sure output looks good, input will be deleted
 pause
+del metadata.txt >nul 2>&1
 
 :cleanup2
 del input.mp3 >nul 2>&1
@@ -59,4 +59,11 @@ exit
 :stop
 echo MISSING input.mp3 and/or cuesheet.cue
 pause
+exit
+
+:stop2
+echo ERROR in cuesheet conversion, check for special characters
+pause
+del metadata.txt
+del length.txt
 exit
