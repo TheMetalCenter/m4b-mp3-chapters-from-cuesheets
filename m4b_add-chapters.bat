@@ -28,8 +28,24 @@ ffmpeg -i input.mp4 -f ffmetadata -i metadata.txt -map_metadata 0 -map_chapters 
 :convertmp4tom4b
 @echo off
 ::Copies the album field to a temp text file and sets variable
-ffprobe output.mp4 -show_entries format_tags=album -of compact=p=0:nk=1 -v 0 > title.txt
-set /p name=< title.txt
+ffprobe output.mp4 -show_entries format_tags=album -of compact=p=0:nk=1 -v 0 > oldalbum.txt
+
+::This removes illegal characters from album field
+@ECHO OFF
+SETLOCAL ENABLEDELAYEDEXPANSION 
+SET "filename1=oldalbum.txt"
+SET "outfile="newalbum.txt"
+(
+FOR /f "usebackqdelims=" %%a IN ("%filename1%") DO (
+ SET "line=%%a"
+ SET "line=!line:?=!"
+ SET "line=!line:/=-!"
+ SET "line=!line::= -!"
+ ECHO !line!
+)
+)>"%outfile%"
+
+set /p name=< newalbum.txt
 
 ::Converts all mp4 to m4b with nero/quicktime chapters (will fail on input.mp4 since no chapters)
 echo Converting mp4 to m4b...
@@ -57,7 +73,8 @@ MOVE "%name%.cue" "cuesheet_backup" >nul 2>&1
 rename ".m4b" "output.m4b" >nul 2>&1
 
 :cleanup
-del title.txt >nul 2>&1
+del oldalbum.txt >nul 2>&1
+del newalbum.txt >nul 2>&1
 del length.txt >nul 2>&1
 
 

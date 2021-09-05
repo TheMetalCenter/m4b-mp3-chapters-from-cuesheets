@@ -74,4 +74,3 @@ EXIT /B 0
     set "FROM=%~1"
     set "TO=%FROM:!=%"
     ren "%FROM%" "%TO%"
-    

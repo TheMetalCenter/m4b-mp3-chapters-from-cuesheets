@@ -18,6 +18,7 @@ echo %text% > cuesheet.cue
 type temp.txt >> cuesheet.cue
 del temp.txt >nul 2>&1
 del formatcheck.txt >nul 2>&1
+del list.txt
 exit
 
 :stop

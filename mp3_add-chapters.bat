@@ -26,9 +26,25 @@ echo Merging mp3 with metadata...
 ffmpeg -i input.mp3 -f ffmetadata -i metadata.txt -map_metadata 0 -id3v2_version 3 -map_chapters 1 -c copy output.mp3
 
 ::Copies the album field to a temp text file and sets variable
-ffprobe output.mp3 -show_entries format_tags=album -of compact=p=0:nk=1 -v 0 > title.txt
+ffprobe output.mp3 -show_entries format_tags=album -of compact=p=0:nk=1 -v 0 > oldalbum.txt
+
+::This removes illegal characters from album field
+@ECHO OFF
+SETLOCAL ENABLEDELAYEDEXPANSION 
+SET "filename1=oldalbum.txt"
+SET "outfile="newalbum.txt"
+(
+FOR /f "usebackqdelims=" %%a IN ("%filename1%") DO (
+ SET "line=%%a"
+ SET "line=!line:?=!"
+ SET "line=!line:/=-!"
+ SET "line=!line::= -!"
+ ECHO !line!
+)
+)>"%outfile%"
+
 @echo off
-set /p name=< title.txt
+set /p name=< newalbum.txt
 
 ::Renames output and cuesheet using album field
 echo Renaming output mp3 and cuesheet...
@@ -44,8 +60,9 @@ MOVE "%name%.cue" "cuesheet_backup" >nul 2>&1
 rename ".mp3" "output.mp3" >nul 2>&1
 
 :cleanup
-del title.txt >nul 2>&1
 del length.txt >nul 2>&1
+del oldalbum.txt >nul 2>&1
+del newalbum.txt >nul 2>&1
 
 echo Make sure output looks good, input will be deleted
 pause

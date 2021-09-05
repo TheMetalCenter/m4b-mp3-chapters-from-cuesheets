@@ -7,7 +7,7 @@ goto :merge
 
 :merge
 echo merging mp4 with metadata
-ffmpeg -i input.mp4 -f ffmetadata -i metadata.txt -map_metadata 0 -map_chapters 1 -c copy output.mp4
+ffmpeg -i input.mp4 -f ffmetadata -i metadata.txt -map_metadata 0 -map_chapters 1 -map 0:a:0? -c copy output.mp4
 echo Check output, will delete input
 pause
 
