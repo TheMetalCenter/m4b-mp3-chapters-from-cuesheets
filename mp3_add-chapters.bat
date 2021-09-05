@@ -24,7 +24,7 @@ if exist "ffprobe.exe" (
 goto :convertcue2metadata
 ) else goto :stop5
 
-:convert2metadata
+:convertcue2metadata
 ::Often the reason of failure is special characters
 
 echo Getting input duration...
