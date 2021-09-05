@@ -1,11 +1,30 @@
 @echo off
+:check1
 if exist "input.mp3" (
-if exist "cuesheet.cue" (
-goto :convert
-) else goto :stop
-) else goto :stop
+goto :check2
+) else goto :stop1
 
-:convert
+:check2
+if exist "cuesheet.cue" (
+goto :check3
+) else goto :stop2
+
+:check3
+if exist "cue2ffmeta.rb" (
+goto :check4
+) else goto :stop3
+
+:check4
+if exist "ffmpeg.exe" (
+goto :check5
+) else goto :stop4
+
+:check5
+if exist "ffprobe.exe" (
+goto :convertcue2metadata
+) else goto :stop5
+
+:convert2metadata
 ::Often the reason of failure is special characters
 
 echo Getting input duration...
@@ -17,7 +36,7 @@ echo Converting cue to metadata...
 ::The file will be created even if conversion fails, will be a blank file
 cue2ffmeta.rb cuesheet.cue %length% > metadata.txt
 if %errorlevel%==1 (echo WARNING: Unable to convert properly. Check cuesheet for unsupported special characters)
-if %errorlevel%==1 (goto :stop2)
+if %errorlevel%==1 (goto :stoperror)
 if %errorlevel%==0 (echo No warnings found, continuing...)
 
 :merge
@@ -73,12 +92,32 @@ del input.mp3 >nul 2>&1
 del list.txt >nul 2>&1
 exit
 
-:stop
-echo MISSING input.mp3 and/or cuesheet.cue
+:stop1
+echo MISSING input.mp3
 pause
 exit
 
 :stop2
+echo MISSING cuesheet.cue
+pause
+exit
+
+:stop3
+echo MISSING cue2ffmeta.rb
+pause
+exit
+
+:stop4
+echo MISSING ffmpeg.exe
+pause
+exit
+
+:stop5
+echo MISSING ffprobe.exe
+pause
+exit
+
+:stoperror
 echo ERROR in cuesheet conversion, check for special characters
 pause
 del metadata.txt
