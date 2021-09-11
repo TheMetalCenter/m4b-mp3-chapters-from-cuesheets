@@ -19,6 +19,8 @@
 - [mp3tag](https://www.mp3tag.de/en/download.html)
 - [python3](https://www.python.org/downloads/)
 
+- These files were meant to be used with [Prologue iOS app](https://prologue.audio/), it's awesome so check it out if you haven't
+
 #### General work flow is:
 1. Merge multiple audio files to a single mp3/mp4 file
 2. Obtain and edit cuesheet to add desired chapter info
@@ -142,8 +144,6 @@
 		- this will also attempt to rename and move output into its own folder based on album field
 		
 ### Tips & Tricks
-- These files were meant to be used with Prologue iOS app, check it out if you haven't
-
 - When editing cuesheets, I recommend recording macros on Notepad++ to quickly edit chapter titles (use regular expressions to replace Track XX with Chapter XX)
 - Also, you can copy and paste chapter titles from Calibre's Table Of Contents viewer if you have ebook
 
@@ -158,7 +158,7 @@
 ### Troubleshooting Notes
 - This method has trouble with special characters, often in the filename of the chapter files or occasionally in the chapter title field of cuesheet
 	- Solution: Remove any special characters
-- Some sources say that mp3 id3v2 chapter has a character limit of 62 characters
+- Some sources say that a mp3 id3v2 chapter has a character limit of 62 characters
 	- I haven't encountered a limit personally
 - Traditionally cuesheets are supposed to be limited to 99 chapters
 	- Some media players may enforce this limitation, but cue2ffmeta can handle over 100 chapters and so can m4b/mp3 embedded chapters
