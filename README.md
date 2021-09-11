@@ -4,6 +4,8 @@
 
 - Windows is required (majority is written in batch files along with executables)
 
+- These merged audiobooks were meant to be used with [Prologue iOS app](https://prologue.audio/), it's awesome so check it out if you haven't
+
 #### Full credit to creators of borrowed scripts/software (included in repository for convenience will remove if asked):
 - [cue2ffmeta.rb](https://gist.github.com/remko/e15c4fe26d479e134f36#file-cue2ffmeta-rb)
 - [track_list_to_cue_sheet.py](https://github.com/karepker/track-list-to-cue-sheet) (adapted for compatibility)
@@ -18,8 +20,6 @@
 - [mp3directcut](https://mpesch3.de/) (v1.99 tested)
 - [mp3tag](https://www.mp3tag.de/en/download.html)
 - [python3](https://www.python.org/downloads/)
-
-- These files were meant to be used with [Prologue iOS app](https://prologue.audio/), it's awesome so check it out if you haven't
 
 #### General work flow is:
 1. Merge multiple audio files to a single mp3/mp4 file
