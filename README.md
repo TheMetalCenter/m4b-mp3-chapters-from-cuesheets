@@ -175,4 +175,5 @@
 	- Solution: Change extension to mp4 temporarily
 - Previously encountered issue where some mp3 files lost all chapter information after further editing of metadata 
 	- This occurred when over there were over 50 chapters and/or 9e7 milliseconds
-	- This was fixed by enforcing id3v2.3 tags, but if issue crops up again then it may be necessary to combine the excess chapters or split into two files.
+	- This was fixed by enforcing id3v2.3 tags
+	- If issue crops up again then it may be necessary to combine the excess chapters or split into two files.
