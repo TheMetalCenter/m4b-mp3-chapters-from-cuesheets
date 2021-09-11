@@ -1,5 +1,6 @@
 :fix_input
 @echo off
+chcp 65001>nul
 
 ::Remove "!" characters:
     setlocal
@@ -10,13 +11,6 @@ setlocal EnableDelayedExpansion
 for %%a in ("*'*.m4b") do (
    set "fileName=%%~NXa"
    ren "%%a" "!filename:'=!"
-)
-
-::Remove "&" characters:
-setlocal enabledelayedexpansion
-for /f "tokens=*" %%c in ('dir /b *.m4b') do (
-  set file=%%c >nul 2>&1
-  ren "!file!" "!file:&=and!" >nul 2>&1
 )
 
 ::This calls the filelist generator function below

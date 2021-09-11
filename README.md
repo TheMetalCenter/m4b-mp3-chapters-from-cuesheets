@@ -43,8 +43,6 @@
 	
 - Temporary files are created as well, but should be deleted at the end of their associated batch process
 
-- PLEASE NOTE: Special characters can cause issues in several steps. I've added some support for the most common, but still an issue with many, especially language characters
-
 ### Scenario 1: Creating single M4B file with embedded chapters from individual chapterized m4b files
 	1. Add m4b files to bin folder of ffmpeg (4.4 plus)
 	2. Import tracks into mp3tag
@@ -165,8 +163,11 @@
 > ffmpeg -i input.mp3 -map_metadata -1 -map_chapters -1 -c copy output2.mp3
 
 ### Troubleshooting Notes
-- This method has trouble with special characters, often in the filename of the chapter files or occasionally in the chapter title field of cuesheet
-	- Solution: Remove any special characters
+- This method may have trouble with special characters outside of utf-8, could be in the filename of the chapter files or occasionally in the chapter title field of cuesheet
+	- Solution: Remove any troublesome special characters
+- Error: 'chcp' is not recognized as an internal or external command, operable program or batch file.
+	- Solution: chcp is an internal windows command located in system32, and should be on your PATH by default
+	- However if you get this error then you need to re-add system32 to your PATH
 - Some sources say that a mp3 id3v2 chapter has a character limit of 62 characters
 	- I haven't encountered a limit personally
 - Traditionally cuesheets are supposed to be limited to 99 chapters
