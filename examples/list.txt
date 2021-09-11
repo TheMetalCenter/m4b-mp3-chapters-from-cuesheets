@@ -1,4 +1,4 @@
-﻿1. "Chapter 1 - Title1" 184:19
+﻿1. "Chapter 1 - Title 1" 184:19
 2. "Chapter 2 - Title 2" 32:09
 3. "Chapter 3 - Title 3" 112:48
 4. "Chapter 4 - Title 4" 16:05
