@@ -51,7 +51,7 @@
 		- Ensure the Album field contains no characters not allowed in a filename (?, :, etc)
 	4. Select all, right click > export > txt_taglist > Okay to create list.txt file
 		- If this is first time, you will need to first edit "txt_taglist" and replace current text with below and save changes
-			$filename(txt,utf-8)$loop(%_path%)%track%.	"%title%"	$div(%_length_seconds%,60)':'$num($mod(%_length_seconds%,60),2)
+			$filename(txt,utf-8)$loop(%_path%)%track%. "%title%" $div(%_length_seconds%,60)':'$num($mod(%_length_seconds%,60),2)
     		$loopend()
 	5. Run m4b_merge-files.bat
 		- will merge m4b files to a single input.mp4 file (make sure tracks are in proper order by filename)
@@ -70,7 +70,7 @@
 		- Ensure the Album field contains no characters not allowed in a filename (?, :, etc)
 	4. Select all, right click > export > txt_taglist > Okay to create list.txt file
 		- If this is first time, you will need to first edit "txt_taglist" and replace current text with below and save changes
-			$filename(txt,utf-8)$loop(%_path%)%track%.	"%title%"	$div(%_length_seconds%,60)':'$num($mod(%_length_seconds%,60),2)
+			$filename(txt,utf-8)$loop(%_path%)%track%. "%title%" $div(%_length_seconds%,60)':'$num($mod(%_length_seconds%,60),2)
     		$loopend()
 	5. Run mp3_merge-files.bat
 		- will merge mp3 files to a single input.mp3 file (ensure tracks are in proper order by filename)

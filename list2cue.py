@@ -129,7 +129,7 @@ if __name__ == '__main__':
     track_times = []
     names = []
     performers = []
-    for track in csv.reader(args.track_list, delimiter='\t'):
+    for track in csv.reader(args.track_list, delimiter=' '):
         try:
             name, track_time = parse_track_string(track, args.name_index, args.time_index)
             names.append(name)
