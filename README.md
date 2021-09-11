@@ -103,22 +103,23 @@
 	1. Add m4b files to bin folder of ffmpeg (4.4 plus)
 	2. Run m4b_merge-files.bat
 		- will merge m4b files to a single input.mp4 file (ensure tracks are in proper order by filename)
-	3. Open up a cmd terminal in the current directory and type:
-	> ffmpeg -i input.mp4 output.mp3
-	3. Drag reencoded mp3 file into mp3directcut
-	4. Go to special > pause detection, Try -44.5 dB, 2.9 s, -6 frames as starting point
-	5. Wait for it to detect chapter breaks, click close once it no longer says "stop"
-	6. Check detected chapters with the >| dotted line button
+		- Remove old m4b files from the directory
+	3. Run m4b_reencode.bat
+		- will rename the m4b file (if needed) to input.mp4 and reencode it to output.mp3
+	4. Drag reencoded mp3 file into mp3directcut
+	5. Go to special > pause detection, Try -44.5 dB, 2.9 s, -6 frames as starting point
+	6. Wait for it to detect chapter breaks, click close once it no longer says "stop"
+	7. Check detected chapters with the >| dotted line button
 		- If undercounts chapters, repeat step 4 with lower seconds or manually find chapters to add 
 			- Note c creates a chapter but only if start and end point of selection are the same
 			- this can be done quickly at position by hitting b, n, c
 		- If it overcounts by a lot, repeat step 4 with higher seconds
 		- Incorrect chapters can be deleted by selecting section, special > remove edit break
 		- It is helpful to cross references number of chapters with numbers of pauses using epub
-	7. File > Save as cuesheet.cue
-	8. Open up .cue file in text editor and change TITLES as desired for each chapter 
-	9. Once satisfied with your .cue, delete reencoded output.mp4
-	9. Run mp4_add-chapters.bat 
+	8. File > Save as cuesheet.cue
+	9. Open up .cue file in text editor and change TITLES as desired for each chapter 
+	10. Once satisfied with your .cue, delete reencoded output.mp4
+	11. Run mp4_add-chapters.bat 
 		- will add chapters then convert fmpeg embedded chapters to proper m4b quicktime format
 		- this will also attempt to rename and move output into its own folder based on album field
 	
