@@ -130,7 +130,7 @@ if os.path.exists(sys.argv[3]):
 print("Joining {} and {} into {}...".format(sys.argv[1], sys.argv[2], sys.argv[3]))
 
 result = subprocess.run(
-    ["ffmpeg", "-f", "concat", "-i", fileListFileName, "-i", metadataFileName, "-map_metadata", "1", "-map", "0", "-map", "-0:v", "-c", "copy", sys.argv[3]],
+    ["ffmpeg", "-f", "concat", "-i", fileListFileName, "-i", metadataFileName, "-map_metadata", "1", "-map", "0:a:0?", "-c", "copy", sys.argv[3]],
     capture_output=False
 )
 

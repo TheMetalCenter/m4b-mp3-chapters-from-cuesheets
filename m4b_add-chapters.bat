@@ -89,7 +89,7 @@ rename cuesheet.cue "%name%.cue" >nul 2>&1
 echo Moving output and backing up cuesheet...
 md "%name%" >nul 2>&1
 MOVE "%name%.m4b" "%name%" >nul 2>&1
-rename ".cue" "cuesheetbackup.cue" >nul 2>&1
+rename ".cue" "cuesheet.cue" >nul 2>&1
 MOVE "%name%.cue" "cuesheet_backup" >nul 2>&1
 
 ::If there album field is blank, then the filename instead becomes ".m4b" or ".cue"

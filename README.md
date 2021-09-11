@@ -142,9 +142,15 @@
 	3. Run mp3_export-metadata.bat or m4b_export-metadata.bat, respectively
 	4. Open metadata.txt and edit the chapter titles as desired
 	5. Rename the file to input.mp3 or input.mp4, respectively
-	9. Run mp3_mergemetadata.bat or mp4_mergemetadata.bat 
+	6. Run mp3_mergemetadata.bat or mp4_merge-metadata.bat 
 		- will overwrite existing chapters with edited chapters
 		- this will also attempt to rename and move output into its own folder based on album field
+	
+	Alternative:
+	3. Run mp3_export-cue.bat (or m4b)
+	4. Make changes
+	5. Rename to input.mp3 (or m4b)
+	6. Run mp3_add-chapter.bat (or m4b)
 		
 ### Tips & Tricks
 - When editing cuesheets, I recommend recording macros on Notepad++ to quickly edit chapter titles (use regular expressions to replace Track XX with Chapter XX)
