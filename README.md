@@ -53,8 +53,6 @@
     		$loopend()
 	5. Use "m4b_list2cue.bat"
 		- will generate a .cue file
-		- *WARNING*: At this time chapters over 1 h 40 minutes (100 min) cause issues, will be read as 2 minutes if 102 minutes etc.
-		- To fix add 100 minutes to each chapter after, or open in mp3directcut and manually edit
 	6. Run m4b_merge-files.bat
 		- will merge m4b files to a single input.mp4 file (make sure tracks are in proper order by filename)
 	7. Run m4b_add-chapters.bat 
@@ -74,8 +72,6 @@
     		$loopend()
 	5. Use "mp3_list2cue.bat"
 		- will generate a .cue file
-		- *WARNING*: At this time chapters over 1 h 40 minutes (100 min) cause issues, will be read as 2 minutes if 102 minutes etc.
-		- To fix add 100 minutes to each chapter after, or open in mp3directcut and manually edit
 	6. Run mp3_merge-files.bat
 		- will merge mp3 files to a single input.mp3 file (ensure tracks are in proper order by filename)
 	7. Run mp3_add-chapters.bat 
