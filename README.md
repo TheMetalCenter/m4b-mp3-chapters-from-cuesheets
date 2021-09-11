@@ -4,7 +4,7 @@
 
 - Windows is required (majority is written in batch files along with executables)
 
-- These merged audiobooks were meant to be used with [Prologue iOS app](https://prologue.audio/), it's awesome so check it out if you haven't
+- These merged audiobooks were meant to be used with [Prologue iOS app](https://prologue.audio/), it's awesome so check it out!
 
 #### Full credit to creators of borrowed scripts/software (included in repository for convenience will remove if asked):
 - [cue2ffmeta.rb](https://gist.github.com/remko/e15c4fe26d479e134f36#file-cue2ffmeta-rb)
