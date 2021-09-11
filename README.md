@@ -29,7 +29,7 @@
 
 ### Installation
 - Install the above required programs separately
-- Place all the .bat files and cue2ffmeta.rb and mergechapters_ab.py in the bin folder of ffmpeg (this is your working directory)
+- Place all the .bat files, cue2ffmeta.rb, list2cue.py, and mergechapters_ab.py in the bin folder of ffmpeg (the working directory)
 - Ensure cuesheet.rb in your rubycue installation was replaced with the copy provided
 - Go to the desired scenario below and follow its steps
 
