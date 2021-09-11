@@ -2,7 +2,7 @@ PERFORMER "placeholder"
 TITLE "placeholder"
 FILE "input.mp3" MP3
   TRACK 00 AUDIO
-    TITLE "Chapter 1 - Title1"
+    TITLE "Chapter 1 - Title 1"
     PERFORMER "placeholder"
     INDEX 01 00:00:00
   TRACK 01 AUDIO
