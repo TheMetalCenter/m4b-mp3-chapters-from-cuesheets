@@ -51,10 +51,10 @@
 		- If this is first time, you will need to first edit "txt_taglist" and replace current text with below and save changes
 			$filename(txt,utf-8)$loop(%_path%)%track%.	"%title%"	$div(%_length_seconds%,60)':'$num($mod(%_length_seconds%,60),2)
     		$loopend()
-	5. Use "m4b_list2cue.bat"
-		- will generate a .cue file
-	6. Run m4b_merge-files.bat
+	5. Run m4b_merge-files.bat
 		- will merge m4b files to a single input.mp4 file (make sure tracks are in proper order by filename)
+	6. Use "m4b_list2cue.bat"
+		- will generate a .cue file
 	7. Run m4b_add-chapters.bat 
 		- will add chapters then convert fmpeg embedded chapters to proper m4b quicktime format
 		- this will also attempt to rename and move output into its own folder based on album field
@@ -70,10 +70,10 @@
 		- If this is first time, you will need to first edit "txt_taglist" and replace current text with below and save changes
 			$filename(txt,utf-8)$loop(%_path%)%track%.	"%title%"	$div(%_length_seconds%,60)':'$num($mod(%_length_seconds%,60),2)
     		$loopend()
-	5. Use "mp3_list2cue.bat"
-		- will generate a .cue file
-	6. Run mp3_merge-files.bat
+	5. Run mp3_merge-files.bat
 		- will merge mp3 files to a single input.mp3 file (ensure tracks are in proper order by filename)
+	6. Use "mp3_list2cue.bat"
+		- will generate a .cue file
 	7. Run mp3_add-chapters.bat 
 		- will add chapters in id3v2.3 format
 		- this will also attempt to rename and move output into its own folder based on album field
