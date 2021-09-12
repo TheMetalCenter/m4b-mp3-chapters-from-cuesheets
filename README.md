@@ -60,7 +60,7 @@
 		- will generate a .cue file
 	7. Run m4b_add-chapters.bat 
 		- will add chapters then convert fmpeg embedded chapters to proper m4b quicktime format
-		- this will also attempt to rename and move output into its own folder based on album field
+		- will also attempt to rename and move output into its own folder based on album field
 
 ### Scenario 2: Creating single MP3 file with embedded chapters from individual chapterized mp3 files
 	1. Add mp3 files to bin folder of ffmpeg (4.4 plus)
@@ -79,7 +79,7 @@
 		- will generate a .cue file
 	7. Run mp3_add-chapters.bat 
 		- will add chapters in id3v2.3 format
-		- this will also attempt to rename and move output into its own folder based on album field
+		- will also attempt to rename and move output into its own folder based on album field
 		
 ### Scenario 3: Creating single MP3 file with embedded chapters from randomly split mp3 files
 	1. Add mp3 files to bin folder of ffmpeg (4.4 plus)
@@ -99,7 +99,7 @@
 	8. Open up .cue file in text editor and change TITLES as desired for each chapter 
 	9. Run mp3_add-chapters.bat 
 		- will add chapters in id3v2.3 format
-		- this will also attempt to rename and move output into its own folder based on album field
+		- will also attempt to rename and move output into its own folder based on album field
 	
 ### Scenario 4: Creating single M4B file with embedded chapters from randomly split m4b files
 	0. Since mp3directcut doesn't support m4b we will make a *temporary* reencode to generate the .cue
@@ -124,7 +124,7 @@
 	10. Once satisfied with your .cue, delete reencoded output.mp4
 	11. Run mp4_add-chapters.bat 
 		- will add chapters then convert fmpeg embedded chapters to proper m4b quicktime format
-		- this will also attempt to rename and move output into its own folder based on album field
+		- will also attempt to rename and move output into its own folder based on album field
 	
 ### Scenario 5: Creating single M4B file that retains chapers from two m4b files with embedded chapters (must repeat if if >2)
 	1. change the names of the two m4b files to be merged to input1.mp4 and input2.mp4
@@ -135,6 +135,7 @@
 	4. If there is more than two m4b files, repeat steps for each additional part
 
 ### Scenario 6: Changing Existing Chapter Information in M4B or MP3
+	Export to Metadata:
 	1. Add the file to bin folder of ffmpeg (4.4 plus)
 	2. Rename the file to export.mp3 or export.m4b
 	3. Run mp3_export-metadata.bat or m4b_export-metadata.bat, respectively
@@ -142,13 +143,17 @@
 	5. Rename the file to input.mp3 or input.mp4, respectively
 	6. Run mp3_mergemetadata.bat or mp4_merge-metadata.bat 
 		- will overwrite existing chapters with edited chapters
-		- this will also attempt to rename and move output into its own folder based on album field
+		- will also attempt to rename and move output into its own folder based on album field
 	
-	Alternative:
+	Alternatively you can export to cuesheet:
+	1. Add the file to bin folder of ffmpeg (4.4 plus)
+	2. Rename the file to export.mp3 or export.m4b
 	3. Run mp3_export-cue.bat (or m4b)
-	4. Make changes
+	4. Open cuesheet.cue and edit the chapter titles as desired
 	5. Rename to input.mp3 (or m4b)
 	6. Run mp3_add-chapter.bat (or m4b)
+		- will add chapters in respective format
+		- will also attempt to rename and move output into its own folder based on album field
 		
 ### Tips & Tricks
 - When editing cuesheets, I recommend recording macros on Notepad++ to quickly edit chapter titles (use regular expressions to replace Track XX with Chapter XX)

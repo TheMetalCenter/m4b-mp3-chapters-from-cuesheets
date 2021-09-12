@@ -2,6 +2,7 @@
 # Original credit to Kar Epker from https://github.com/karepker/track-list-to-cue-sheet, this is stripped down version for audiobook conversion
 
 # Changes from original:
+    # Added frames support when generating MM:SS:FF
     # Removed requirement for title and performer, giving placeholders instead
     # Added quotes to title and performer fields for proper parsing by cue2ffmeta
     # Decreased index requirements for input track list (no longer requires performer to be included, since it wasn't used). This was done to decrease possible errors from performer fields
@@ -84,12 +85,13 @@ def create_cue_sheet(names, performers, track_times,
             zip(names, performers, track_times)):
         minutes = int(accumulated_time.total_seconds() / 60)
         seconds = int(accumulated_time.total_seconds() % 60)
+        frames = int(float(float((int(accumulated_time.total_seconds() % (1000*60))) / 1000) % 1) * 75)
+
 
         cue_sheet_entry = '''  TRACK {:02} AUDIO
     TITLE "{}"
-    PERFORMER "{}"
-    INDEX 01 {:02d}:{:02d}:00'''.format(track_index, name, performer, minutes,
-                                        seconds)
+    INDEX 01 {:02d}:{:02d}:{:02d}'''.format(track_index, name, minutes,
+                                        seconds, frames)
         accumulated_time += track_time
         yield cue_sheet_entry
 

@@ -5,7 +5,7 @@ goto :check2
 ) else goto :stop1
 
 :check2
-if exist "embedded2cue.py" (
+if exist "export-cue.py" (
 goto :embedded2cue
 ) else goto :stop2
 
@@ -21,6 +21,6 @@ pause
 exit
 
 :stop2
-echo MISSING list2cue.py
+echo MISSING export-cue.py
 pause
 exit

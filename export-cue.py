@@ -3,13 +3,11 @@
 # Adapted from script by Kar Epker from https://github.com/karepker/track-list-to-cue-sheet
 
 # Changes from original:
+    # Added frames support when generating MM:SS:FF
     # changed input from tracklist to ffprobe chapter list
     # Removed requirement for title and performer, giving placeholders instead
     # Added quotes to title and performer fields for proper parsing by cue2ffmeta
     # changed how index is delimited
-    # rounding decimals to integers
-
-# Note: Cuesheets do not use decimals. ffprobe will export milliseconds as decimals, which are round to nearest second. May result in slight offset
 
 # Usage: 
 # ffprobe -print_format compact=print_section=0:nokey=1:escape=csv -show_chapters "export.m4b" > metadata_chapters.txt
@@ -42,12 +40,11 @@ def parse_track_string(track, name_index, time_index_start, time_index_end):
     time_string_end = track[time_index_end]
 
     logger = logging.getLogger(__name__)
-    logger.debug('Got name %s and time %s.', name, time_string_start, time_string_end)
+    logger.debug('Got name %s, time start %s, and time end %s', name, time_string_start, time_string_end)
 
     # Read the time portion of the string
     total_seconds = 0
-    time_new_float = float(time_string_end) - float(time_string_start)
-    time_new_int = int(round(float(time_new_float)))
+    time_new_int = int(time_string_end) - int(time_string_start)
     try:
         total_seconds = time_new_int
     except ValueError:
@@ -73,16 +70,17 @@ def create_cue_sheet(names, performers, track_times,
     """
     accumulated_time = start_time
 
-    for time_new_int, (name, performer, track_time) in enumerate(
+    for track_index, (name, performer, track_time) in enumerate(
             zip(names, performers, track_times)):
-        minutes = int(accumulated_time.total_seconds() / 60)
-        seconds = int(accumulated_time.total_seconds() % 60)
+        minutes = int(accumulated_time.total_seconds() / (1000*60))
+        seconds = int((int(accumulated_time.total_seconds() % (1000*60))) / 1000)
+        frames = int(float(float((int(accumulated_time.total_seconds() % (1000*60))) / 1000) % 1) * 75)
+
 
         cue_sheet_entry = '''  TRACK {:02} AUDIO
     TITLE "{}"
-    PERFORMER "{}"
-    INDEX 01 {:02d}:{:02d}:00'''.format(time_new_int, name, performer, minutes,
-                                        seconds)
+    INDEX 01 {:02d}:{:02d}:{:02d}'''.format(track_index, name, minutes,
+                                        seconds, frames)
         accumulated_time += track_time
         yield cue_sheet_entry
 
@@ -95,13 +93,12 @@ if __name__ == '__main__':
     parser.add_argument('--name-index', dest='name_index', default=6, type=int,
                         help='The index of the column in the track list '
                         'containing the track name.')
-    parser.add_argument('--time-index-start', dest='time_index_start', default=3, type=float,
+    parser.add_argument('--time-index-start', dest='time_index_start', default=2, type=int,
                         help='The index of the column in the track list '
                         'containing the track\'s elapsed time.')
-    parser.add_argument('--time-index-end', dest='time_index_end', default=5, type=float,
+    parser.add_argument('--time-index-end', dest='time_index_end', default=4, type=int,
 						help='The index of the column in the track list '
                         'containing the track\'s elapsed time.')
-
     parser.add_argument('--start-seconds', dest='start_seconds', type=int,
                         default=0, help='Start time of the first track in '
                         'seconds.')
