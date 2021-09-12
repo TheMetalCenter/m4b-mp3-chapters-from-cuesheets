@@ -183,15 +183,17 @@
 		- will also attempt to rename and move output into its own folder based on album field
 		
 ### Tips & Tricks <a name="tips"></a>
-- When editing cuesheets, I recommend recording macros on Notepad++ to quickly edit chapter titles (use regular expressions to replace Track XX with Chapter XX)
-- Also, you can copy and paste chapter titles from Calibre's Table Of Contents viewer if you have ebook
+- When editing cuesheets, I recommend recording macros on Notepad++ to quickly edit chapter titles (
+	- You can use regular expressions to replace Track XX with Chapter XX or remove existing formulaic chapters like "001")
+- Also, you can copy and paste chapter titles from Calibre's Table Of Contents viewer if you have a copy of the ebook
+	- You can even set up a macro to do this for you with autohotkey (example included, created with [PuloversMacroCreator](https://github.com/Pulover/PuloversMacroCreator)
 
-- renamefiles.bat is just a lazy way to rename any .mp3/mp4 and .cue (should only have one each) to input.mp3/mp4 and cuesheet.cue
+- renamefiles.bat is also included, it is a quick and lazy way to rename any .mp3/mp4 and .cue (should only have one each) to input.mp3/mp4 and cuesheet.cue
 
 - You can double check chapters with:
 > ffmpeg -i file.ext OR ffprobe file.ext
 
-- To remove existing chapters from a file:
+- To remove all existing chapters from a file:
 > ffmpeg -i input.mp3 -map_metadata -1 -map_chapters -1 -c copy output2.mp3
 
 ### Troubleshooting Notes <a name="trouble"></a>
