@@ -2,22 +2,14 @@ PERFORMER "placeholder"
 TITLE "placeholder"
 FILE "input.mp3" MP3
   TRACK 00 AUDIO
-    TITLE "Chapter 1 - Title 1"
-    PERFORMER "placeholder"
+    TITLE "Chapter 01 - Title 01"
     INDEX 01 00:00:00
   TRACK 01 AUDIO
-    TITLE "Chapter 2 - Title 2"
-    PERFORMER "placeholder"
-    INDEX 01 184:19:00
+    TITLE "Chapter 02 - Title 02"
+    INDEX 01 04:19:19
   TRACK 02 AUDIO
-    TITLE "Chapter 3 - Title 3"
-    PERFORMER "placeholder"
-    INDEX 01 216:28:00
+    TITLE "Chapter 03 - Title 03"
+    INDEX 01 06:28:29
   TRACK 03 AUDIO
-    TITLE "Chapter 4 - Title 4"
-    PERFORMER "placeholder"
-    INDEX 01 329:16:00
-  TRACK 04 AUDIO
-    TITLE "Chapter 5 - Title 5"
-    PERFORMER "placeholder"
-    INDEX 01 345:21:00
+    TITLE "Chapter 04 - Title 04"
+    INDEX 01 09:16:41

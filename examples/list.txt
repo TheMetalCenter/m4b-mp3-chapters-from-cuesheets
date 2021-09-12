@@ -1,5 +1,4 @@
-﻿1. "Chapter 1 - Title 1" 184:19
-2. "Chapter 2 - Title 2" 32:09
-3. "Chapter 3 - Title 3" 112:48
-4. "Chapter 4 - Title 4" 16:05
-5. "Chapter 5 - Title 5" 19:28
+﻿1. "Chapter 01 - Title 01" 4:19
+2. "Chapter 02 - Title 02" 2:09
+3. "Chapter 03 - Title 03" 2:48
+4. "Chapter 04 - Title 04" 16:05
