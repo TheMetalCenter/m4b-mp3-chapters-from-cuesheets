@@ -18,7 +18,7 @@
 	- [Scenario 2: Creating single MP3 file with embedded chapters from individual chapterized mp3 files](#scenario2)
 	- [Scenario 3: Creating single MP3 file with embedded chapters from randomly split mp3 files](#scenario3)
 	- [Scenario 4: Creating single M4B file with embedded chapters from randomly split m4b files](#scenario4)
-	- [Scenario 5: Creating single M4B file that retains chapers from two m4b files with embedded chapters (must repeat if if >2)](#scenario5)
+	- [Scenario 5: Creating single M4B file that retains chapers from two m4b files with embedded chapters (can repeat if >2)](#scenario5)
 	- [Scenario 6: Changing Existing Chapter Information in M4B or MP3](#scenario6)
 8. [Tips & Tricks](#tips)
 9. [Troubleshooting Notes](#trouble)
@@ -153,7 +153,7 @@
 		- will add chapters then convert fmpeg embedded chapters to proper m4b quicktime format
 		- will also attempt to rename and move output into its own folder based on album field
 	
-### Scenario 5: Creating single M4B file that retains chapers from two m4b files with embedded chapters (must repeat if if >2) <a name="scenario5"></a>
+### Scenario 5: Creating single M4B file that retains chapers from two m4b files with embedded chapters (can repeat if >2) <a name="scenario5"></a>
 	1. change the names of the two m4b files to be merged to input1.mp4 and input2.mp4
 	2. Run m4b_merge-chapterized.bat, which will merge the two files
 		- will combine chapters then convert fmpeg embedded chapters to proper m4b quicktime format
