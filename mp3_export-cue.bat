@@ -11,7 +11,7 @@ goto :embedded2cue
 
 :embedded2cue
 ffprobe -print_format compact=print_section=0:nokey=1:escape=csv -show_chapters "export.mp3" > metadata_chapters.txt
-py export-cue.py metadata_chapters.txt --audio-file="export.mp3" --output-file="cuesheet.cue" --debug
+py export-cue.py metadata_chapters.txt --audio-file="export.mp3" --output-file="cuesheet.cue"
 del metadata_chapters.txt
 pause
 exit
