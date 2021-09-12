@@ -20,41 +20,41 @@ Chaptercopy:
 Loop
 {
     WinActivate, *cuesheet.cue - Notepad++ ahk_class Notepad++
-    Sleep, 200
-    Sleep, 200
+    Sleep, 50
+    Sleep, 50
     Send, {LAlt Down}
-    Sleep, 40
+    Sleep, 50
     Send, {Tab}
-    Sleep, 40
+    Sleep, 50
     Send, {LAlt Up}
-    Sleep, 200
+    Sleep, 50
     WinActivate, Edit the ToC [EPUB] ahk_class Qt5152QWindowIcon
     Send, {LControl Down}
-    Sleep, 80
+    Sleep, 50
     Send, {c}
     Sleep, 100
     Send, {LControl Up}
-    Sleep, 200
+    Sleep, 50
     Send, {Down}
-    Sleep, 200
+    Sleep, 50
     Send, {LAlt Down}
-    Sleep, 60
+    Sleep, 50
     Send, {Tab}
-    Sleep, 70
+    Sleep, 50
     WinActivate, Task Switching ahk_class MultitaskingViewFrame
     Send, {LAlt Up}
-    Sleep, 200
+    Sleep, 50
     WinActivate, *cuesheet.cue - Notepad++ ahk_class Notepad++
     Send, {LControl Down}
-    Sleep, 70
+    Sleep, 50
     Send, {v}
-    Sleep, 200
+    Sleep, 50
     Send, {LControl Up}{Down}
-    Sleep, 100
+    Sleep, 50
     Send, {Down}
-    Sleep, 200
+    Sleep, 50
     Send, {Down}
-    Sleep, 150
+    Sleep, 50
     Send, {Left}
 }
 Return
