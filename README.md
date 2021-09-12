@@ -1,10 +1,18 @@
-## m4b-mp3-audiobook-chapters-from-cuesheets
-- Mostly automated way to merge audiobooks without quality loss from reencoding (remuxing only) to either single file m4b files with quicktime/nero chapters or single file mp3s with id3v2 chapters using cuesheets
+## m4b-mp3-chapters-from-cuesheets
+- Mostly automated way to merge audiobooks (or podcasts) without quality loss from reencoding (remuxing only) to either single file m4b files with quicktime/nero chapters or single file mp3s with id3v2 chapters using cuesheets
 	- [Good breakdown of different chapter types](https://github.com/Zeugma440/atldotnet/wiki/Focus-on-Chapter-metadata)
 
-- Windows is required (majority is written in batch files along with executables)
+- Windows is required to run bat scripts, but python and ruby scripts should work on linux/macOS
 
 - These merged audiobooks were meant to be used with [Prologue iOS app](https://prologue.audio/), it's awesome so check it out!
+
+### Features:
+- Merge mp3 or m4b files into a single file without re-encoding
+- Create cuesheets from tracklists
+- Embed chapters into mp3 file as id3v2 chapters
+- Embed chapters into m4b files as nero/quicktime
+- Export existing chapters to cuesheet
+
 
 #### Full credit to creators of borrowed scripts/software (included in repository for convenience will remove if asked):
 - [cue2ffmeta.rb](https://gist.github.com/remko/e15c4fe26d479e134f36#file-cue2ffmeta-rb)
