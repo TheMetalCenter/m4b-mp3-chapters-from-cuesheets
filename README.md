@@ -6,7 +6,7 @@
 
 - These merged audiobooks were meant to be used with [Prologue iOS app](https://prologue.audio/), it's awesome so check it out!
 
-### Table of contents
+### Table of Contents
 1. [Features](#features)
 2. [Credit](#credit)
 3. [Dependencies](#dependencies)
@@ -19,7 +19,7 @@
 	- [Scenario 3: Creating single MP3 file with embedded chapters from randomly split mp3 files](#scenario3)
 	- [Scenario 4: Creating single M4B file with embedded chapters from randomly split m4b files](#scenario4)
 	- [Scenario 5: Creating single M4B file that retains chapters from two m4b files with embedded chapters (can repeat if >2)](#scenario5)
-	- [Scenario 6: Changing Existing Chapter Information in M4B or MP3](#scenario6)
+	- [Scenario 6: Changing existing chapter titles in M4B or MP3](#scenario6)
 8. [Tips & Tricks](#tips)
 9. [Troubleshooting Notes](#trouble)
 
@@ -161,7 +161,7 @@
 	3. Can check with ffmpeg -i *.m4b or MediaInfo to ensure chapters are present
 	4. If there is more than two m4b files, repeat steps for each additional part
 
-### Scenario 6: Changing Existing Chapter Information in M4B or MP3 <a name="scenario6"></a>
+### Scenario 6: Changing existing chapter titles in M4B or MP3 <a name="scenario6"></a>
 	Export to Metadata:
 	1. Add the file to bin folder of ffmpeg (4.4 plus)
 	2. Rename the file to export.mp3 or export.m4b
