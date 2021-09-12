@@ -7,7 +7,7 @@
 - These merged audiobooks were meant to be used with [Prologue iOS app](https://prologue.audio/), it's awesome so check it out!
 
 ### Table of contents
-1. [Feautres](#features)
+1. [Features](#features)
 2. [Credit](#credit)
 3. [Dependencies](#dependencies)
 4. [General Work Flow](#workflow)
