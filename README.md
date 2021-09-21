@@ -19,7 +19,7 @@
 	- [Scenario 3: Creating single MP3 file with embedded chapters from randomly split mp3 files](#scenario3)
 	- [Scenario 4: Creating single M4B file with embedded chapters from randomly split m4b files](#scenario4)
 	- [Scenario 5: Creating single M4B file that retains chapters from two m4b files with embedded chapters (can repeat if >2)](#scenario5)
-	- [Scenario 6: Changing existing chapter titles in M4B or MP3](#scenario6)
+	- [Scenario 6: Changing existing embedded chapter titles in M4B or MP3](#scenario6)
 8. [Tips & Tricks](#tips)
 9. [Troubleshooting Notes](#trouble)
 
@@ -74,7 +74,7 @@
 	1. Add m4b files to bin folder of ffmpeg (4.4 plus)
 	2. Import tracks into mp3tag
 	3. Edit "title" fields as desired (full chapter names will take longer than simple Chapter 01)
-		- Ensure Tracknumber fields are filled with integers (can use mp3tag > tools > auto number wizard) 
+		- Ensure track number is filled and in order (can use mp3tag > tools > auto number wizard) 
 		- Ensure the Artist field is not empty
 		- Ensure the Album field contains no characters not allowed in a filename (?, :, etc)
 	4. Select all, right click > export > txt_taglist > Okay to create list.txt file
@@ -161,7 +161,7 @@
 	3. Can check with ffmpeg -i *.m4b or MediaInfo to ensure chapters are present
 	4. If there is more than two m4b files, repeat steps for each additional part
 
-### Scenario 6: Changing existing chapter titles in M4B or MP3 <a name="scenario6"></a>
+### Scenario 6: Changing existing embedded chapter titles in M4B or MP3 <a name="scenario6"></a>
 	Export to Metadata:
 	1. Add the file to bin folder of ffmpeg (4.4 plus)
 	2. Rename the file to export.mp3 or export.m4b
@@ -183,16 +183,15 @@
 		- will also attempt to rename and move output into its own folder based on album field
 		
 ### Tips & Tricks <a name="tips"></a>
-- When editing cuesheets, I recommend recording macros on Notepad++ to quickly edit chapter titles (
+- I recommend mpv player if checking chapters on Windows, can quickly skim with Ctrl+1 and Ctrl+2 to make sure assigned properly
+	- Support both mp3 and m4b chapters
+- When editing cuesheets, I recommend recording macros on Notepad++ to quickly edit chapter titles
 	- You can use regular expressions to replace Track XX with Chapter XX or remove existing formulaic chapters like "001")
 - Also, you can copy and paste chapter titles from Calibre's Table Of Contents viewer if you have a copy of the ebook
 	- You can even set up a macro to do this for you with autohotkey (example included, created with [PuloversMacroCreator](https://github.com/Pulover/PuloversMacroCreator)
-
 - renamefiles.bat is also included, it is a quick and lazy way to rename any .mp3/mp4 and .cue (should only have one each) to input.mp3/mp4 and cuesheet.cue
-
 - You can double check chapters with:
 > ffmpeg -i file.ext OR ffprobe file.ext
-
 - To remove all existing chapters from a file:
 > ffmpeg -i input.mp3 -map_metadata -1 -map_chapters -1 -c copy output2.mp3
 
@@ -203,7 +202,7 @@
 	- Solution: chcp is an internal windows command located in system32, and should be on your PATH by default
 	- However if you get this error then you need to re-add system32 to your PATH
 - Some sources say that a mp3 id3v2 chapter has a character limit of 62 characters
-	- I haven't encountered a limit personally
+	- I haven't encountered a limit personally, had a chapter with 99 characters work fine
 - Traditionally cuesheets are supposed to be limited to 99 chapters
 	- Some media players may enforce this limitation, but cue2ffmeta can handle over 100 chapters and so can m4b/mp3 embedded chapters
 - If having performer valdiation issues
