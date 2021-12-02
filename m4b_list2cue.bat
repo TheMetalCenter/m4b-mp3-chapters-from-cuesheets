@@ -16,6 +16,9 @@ goto :list2cue
 
 :list2cue
 python list2cue.py list.txt --audio-file="input.mp4" --output-file="cuesheet.cue"
+echo cuesheet generated
+pause
+exit
 
 :stop1
 echo MISSING input.mp4
