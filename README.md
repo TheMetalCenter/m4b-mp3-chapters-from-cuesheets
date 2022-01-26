@@ -162,7 +162,17 @@
 	4. If there is more than two m4b files, repeat steps for each additional part
 
 ### Scenario 6: Changing existing embedded chapter titles in M4B or MP3 <a name="scenario6"></a>
-	Export to Metadata:
+- Export to Cue Sheet:	
+	1. Add the file to bin folder of ffmpeg (4.4 plus)
+	2. Rename the file to export.mp3 or export.m4b
+	3. Run mp3_export-cue.bat (or m4b)
+	4. Open cuesheet.cue and edit the chapter titles as desired
+	5. Rename to input.mp3 (or m4b)
+	6. Run mp3_add-chapter.bat (or m4b)
+		- will add chapters in respective format
+		- will also attempt to rename and move output into its own folder based on album field
+		
+- Alternatively you can export to Metadata:
 	1. Add the file to bin folder of ffmpeg (4.4 plus)
 	2. Rename the file to export.mp3 or export.m4b
 	3. Run mp3_export-metadata.bat or m4b_export-metadata.bat, respectively
@@ -172,15 +182,8 @@
 		- will overwrite existing chapters with edited chapters
 		- will also attempt to rename and move output into its own folder based on album field
 	
-	Alternatively you can export to cuesheet:
-	1. Add the file to bin folder of ffmpeg (4.4 plus)
-	2. Rename the file to export.mp3 or export.m4b
-	3. Run mp3_export-cue.bat (or m4b)
-	4. Open cuesheet.cue and edit the chapter titles as desired
-	5. Rename to input.mp3 (or m4b)
-	6. Run mp3_add-chapter.bat (or m4b)
-		- will add chapters in respective format
-		- will also attempt to rename and move output into its own folder based on album field
+
+
 		
 ### Tips & Tricks <a name="tips"></a>
 - I recommend mpv player if checking chapters on Windows, can quickly skim with Ctrl+1 and Ctrl+2 to make sure assigned properly
@@ -194,6 +197,7 @@
 > ffmpeg -i file.ext OR ffprobe file.ext
 - To remove all existing chapters from a file:
 > ffmpeg -i input.mp3 -map_metadata -1 -map_chapters -1 -c copy output2.mp3
+ffmpeg.exe -i input.mp4 -map_metadata -1 -map_chapters -1 -map 0:a:0? -c copy output.mp4
 
 ### Troubleshooting Notes <a name="trouble"></a>
 - This method may have trouble with special characters outside of utf-8, could be in the filename of the chapter files or occasionally in the chapter title field of cuesheet
