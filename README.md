@@ -71,6 +71,7 @@
 ## Usage Scenarios: <a name="scenarios"></a>
 
 ### Scenario 1: Creating single M4B file with embedded chapters from individual chapterized m4b files <a name="scenario1"></a>
+	Steps:
 	1. Add m4b files to bin folder of ffmpeg (4.4 plus)
 	2. Import tracks into mp3tag
 	3. Edit "title" fields as desired (full chapter names will take longer than simple Chapter 01)
@@ -90,6 +91,7 @@
 		- will also attempt to rename and move output into its own folder based on album field
 
 ### Scenario 2: Creating single MP3 file with embedded chapters from individual chapterized mp3 files <a name="scenario2"></a>
+	Steps:
 	1. Add mp3 files to bin folder of ffmpeg (4.4 plus)
 	2. Import tracks into mp3tag
 	3. Edit "title" fields as desired (full chapter names will take longer than simple Chapter 01)
@@ -129,6 +131,7 @@
 		- will also attempt to rename and move output into its own folder based on album field
 	
 ### Scenario 4: Creating single M4B file with embedded chapters from randomly split m4b files <a name="scenario4"></a>
+	Steps:
 	0. Since mp3directcut doesn't support m4b we will make a *temporary* reencode to generate the .cue
 	1. Add m4b files to bin folder of ffmpeg (4.4 plus)
 	2. Run m4b_merge-files.bat
@@ -154,6 +157,7 @@
 		- will also attempt to rename and move output into its own folder based on album field
 	
 ### Scenario 5: Creating single M4B file that retains chapters from two m4b files with embedded chapters (can repeat if >2) <a name="scenario5"></a>
+	Steps:
 	1. change the names of the two m4b files to be merged to input1.mp4 and input2.mp4
 	2. Run m4b_merge-chapterized.bat, which will merge the two files
 		- will combine chapters then convert fmpeg embedded chapters to proper m4b quicktime format
@@ -162,7 +166,7 @@
 	4. If there is more than two m4b files, repeat steps for each additional part
 
 ### Scenario 6: Changing existing embedded chapter titles in M4B or MP3 <a name="scenario6"></a>
-- Export to Cue Sheet:	
+	Export to Cue Sheet:	
 	1. Add the file to bin folder of ffmpeg (4.4 plus)
 	2. Rename the file to export.mp3 or export.m4b
 	3. Run mp3_export-cue.bat (or m4b)
@@ -172,12 +176,12 @@
 		- will add chapters in respective format
 		- will also attempt to rename and move output into its own folder based on album field
 		
-- Alternatively you can export to Metadata:
+	Alternatively, you can export to Metadata:
 	1. Add the file to bin folder of ffmpeg (4.4 plus)
 	2. Rename the file to export.mp3 or export.m4b
-	3. Run mp3_export-metadata.bat or m4b_export-metadata.bat, respectively
+	3. Run mp3_export-metadata.bat or m4b_export-metadata.bat
 	4. Open metadata.txt and edit the chapter titles as desired
-	5. Rename the file to input.mp3 or input.mp4, respectively
+	5. Rename the file to input.mp3 or input.mp4
 	6. Run mp3_mergemetadata.bat or mp4_merge-metadata.bat 
 		- will overwrite existing chapters with edited chapters
 		- will also attempt to rename and move output into its own folder based on album field
@@ -197,7 +201,7 @@
 > ffmpeg -i file.ext OR ffprobe file.ext
 - To remove all existing chapters from a file:
 > ffmpeg -i input.mp3 -map_metadata -1 -map_chapters -1 -c copy output2.mp3
-ffmpeg.exe -i input.mp4 -map_metadata -1 -map_chapters -1 -map 0:a:0? -c copy output.mp4
+> ffmpeg.exe -i input.mp4 -map_metadata -1 -map_chapters -1 -map 0:a:0? -c copy output.mp4
 
 ### Troubleshooting Notes <a name="trouble"></a>
 - This method may have trouble with special characters outside of utf-8, could be in the filename of the chapter files or occasionally in the chapter title field of cuesheet
@@ -208,7 +212,7 @@ ffmpeg.exe -i input.mp4 -map_metadata -1 -map_chapters -1 -map 0:a:0? -c copy ou
 - Some sources say that a mp3 id3v2 chapter has a character limit of 62 characters
 	- I haven't encountered a limit personally, had a chapter with 99 characters work fine
 - Traditionally cuesheets are supposed to be limited to 99 chapters
-	- Some media players may enforce this limitation, but cue2ffmeta can handle over 100 chapters and so can m4b/mp3 embedded chapters
+	- Some media players may enforce this limitation, but this repo has no issues embedding over 100 chapters
 - If having performer valdiation issues
 	- Solution: Make sure cuesheet.rb was replaced (see above)
 - If cue is malformed and the audiobook is over 16 hours
@@ -224,3 +228,4 @@ ffmpeg.exe -i input.mp4 -map_metadata -1 -map_chapters -1 -map 0:a:0? -c copy ou
 	- This occurred when over there were over 50 chapters and/or 9e7 milliseconds
 	- This was fixed by enforcing id3v2.3 tags
 	- If issue crops up again then it may be necessary to combine the excess chapters or split into two files.
+- Some media players may not correctly read cue times for a variable bitrate file, resulting in chapters being offset by a few seconds. 
