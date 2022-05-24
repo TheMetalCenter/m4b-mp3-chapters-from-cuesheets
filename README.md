@@ -71,7 +71,6 @@
 ## Usage Scenarios: <a name="scenarios"></a>
 
 ### Scenario 1: Creating single M4B file with embedded chapters from individual chapterized m4b files <a name="scenario1"></a>
-	Steps:
 	1. Add m4b files to bin folder of ffmpeg (4.4 plus)
 	2. Import tracks into mp3tag
 	3. Edit "title" fields as desired (full chapter names will take longer than simple Chapter 01)
@@ -91,7 +90,6 @@
 		- will also attempt to rename and move output into its own folder based on album field
 
 ### Scenario 2: Creating single MP3 file with embedded chapters from individual chapterized mp3 files <a name="scenario2"></a>
-	Steps:
 	1. Add mp3 files to bin folder of ffmpeg (4.4 plus)
 	2. Import tracks into mp3tag
 	3. Edit "title" fields as desired (full chapter names will take longer than simple Chapter 01)
@@ -131,7 +129,6 @@
 		- will also attempt to rename and move output into its own folder based on album field
 	
 ### Scenario 4: Creating single M4B file with embedded chapters from randomly split m4b files <a name="scenario4"></a>
-	Steps:
 	0. Since mp3directcut doesn't support m4b we will make a *temporary* reencode to generate the .cue
 	1. Add m4b files to bin folder of ffmpeg (4.4 plus)
 	2. Run m4b_merge-files.bat
@@ -157,7 +154,6 @@
 		- will also attempt to rename and move output into its own folder based on album field
 	
 ### Scenario 5: Creating single M4B file that retains chapters from two m4b files with embedded chapters (can repeat if >2) <a name="scenario5"></a>
-	Steps:
 	1. change the names of the two m4b files to be merged to input1.mp4 and input2.mp4
 	2. Run m4b_merge-chapterized.bat, which will merge the two files
 		- will combine chapters then convert fmpeg embedded chapters to proper m4b quicktime format
@@ -200,8 +196,8 @@
 - You can double check chapters with:
 > ffmpeg -i file.ext OR ffprobe file.ext
 - To remove all existing chapters from a file:
-> ffmpeg -i input.mp3 -map_metadata -1 -map_chapters -1 -c copy output2.mp3
-> ffmpeg.exe -i input.mp4 -map_metadata -1 -map_chapters -1 -map 0:a:0? -c copy output.mp4
+	- ffmpeg -i input.mp3 -map_metadata -1 -map_chapters -1 -c copy output2.mp3
+	- ffmpeg.exe -i input.mp4 -map_metadata -1 -map_chapters -1 -map 0:a:0? -c copy output.mp4
 
 ### Troubleshooting Notes <a name="trouble"></a>
 - This method may have trouble with special characters outside of utf-8, could be in the filename of the chapter files or occasionally in the chapter title field of cuesheet
