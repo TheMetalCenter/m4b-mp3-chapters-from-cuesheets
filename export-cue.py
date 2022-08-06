@@ -8,6 +8,7 @@
     # Removed requirement for title and performer, giving placeholders instead
     # Added quotes to title and performer fields for proper parsing by cue2ffmeta
     # changed how index is delimited
+	# imports variable timebase from timebase1.txt, generated from ffprobe, rather than static timebase of 1000
 
 # Usage: 
 # ffprobe -print_format compact=print_section=0:nokey=1:escape=csv -show_chapters "export.m4b" > metadata_chapters.txt
@@ -22,6 +23,10 @@ import sys
 
 performer = "placeholder"
 title = "placeholder"
+
+txt = open("timebase1.txt").readlines()
+TIMEBASE = float(txt[0].split("=")[0])
+print(TIMEBASE)
 
 def parse_track_string(track, name_index, time_index_start, time_index_end):
     """Parses a track string and returns the name and time.
@@ -72,9 +77,9 @@ def create_cue_sheet(names, performers, track_times,
 
     for track_index, (name, performer, track_time) in enumerate(
             zip(names, performers, track_times)):
-        minutes = int(accumulated_time.total_seconds() / (1000*60))
-        seconds = int((int(accumulated_time.total_seconds() % (1000*60))) / 1000)
-        frames = int(float(float((int(accumulated_time.total_seconds() % (1000*60))) / 1000) % 1) * 75)
+        minutes = int(accumulated_time.total_seconds() / (TIMEBASE*60))
+        seconds = int((int(accumulated_time.total_seconds() % (TIMEBASE*60))) / TIMEBASE)
+        frames = int(float(float((int(accumulated_time.total_seconds() % (TIMEBASE*60))) / TIMEBASE) % 1) * 75)
 
 
         cue_sheet_entry = '''  TRACK {:02} AUDIO
