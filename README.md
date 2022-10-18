@@ -42,7 +42,9 @@
 - [ffmpeg.exe & ffprobe.exe](https://www.gyan.dev/ffmpeg/builds/) (tested with 4.4)
 - [Ruby](https://www.ruby-lang.org/en/downloads/)
 - [rubycue](https://rubygems.org/gems/rubycue/versions/0.1.0) 
-	- An edited cuesheet.rb is provided, which allows for 16+ hour books and turns off validation parsing, it should be placed in your-ruby-install-location\Ruby30-x64\lib\ruby\gems\3.0.0\gems\rubycue-0.1.0\lib\rubycue"
+	- After installing ruby, install rubycue with "gem install rubycue" in cmd terminal
+	- Next, use the provided edited cuesheet.rb, which allows for 16+ hour books and turns off validation parsing, and place in your-ruby-install-location\Ruby30-x64\lib\ruby\gems\3.0.0\gems\rubycue-0.1.0\lib\rubycue" 
+	- Path may slightly differ depending on Ruby version number
 - [mp3directcut](https://mpesch3.de/) (v1.99 tested)
 - [mp3tag](https://www.mp3tag.de/en/download.html)
 - [python3](https://www.python.org/downloads/)
@@ -209,6 +211,7 @@
 	- I haven't encountered a limit personally, had a chapter with 99 characters work fine
 - Traditionally cuesheets are supposed to be limited to 99 chapters
 	- Some media players may enforce this limitation, but this repo has no issues embedding over 100 chapters
+		- The limit for quicktime m4b chapters seems to be 255 chapters
 - If having performer valdiation issues
 	- Solution: Make sure cuesheet.rb was replaced (see above)
 - If cue is malformed and the audiobook is over 16 hours
